@@ -91,15 +91,17 @@ Wenn ein neuer Affiliate (z.B. Anna, Lisa, ...) zum System kommt, reicht es **ni
 
 **Schritt 1: `_redirects` der Hub-Site erweitern**
 
-In `03_Output_Pages/_redirects` eine neue Zeile hinzufügen:
+In `03_Output_Pages/_redirects` eine neue Zeile hinzufügen (Status **302**!):
 ```
-/[NAME]/*    https://[NAME]-realrise.netlify.app/:splat    200
+/[NAME]/*    https://[NAME]-realrise.netlify.app/:splat    302
 ```
 
 Beispiel für Anna:
 ```
-/anna/*    https://anna-realrise.netlify.app/:splat    200
+/anna/*    https://anna-realrise.netlify.app/:splat    302
 ```
+
+⚠️ **302, nicht 200!** Die Affiliate-Site liegt auf dem Netlify-Account des Affiliates. Ein 200-Proxy auf eine Site eines fremden Accounts gibt **500** (getestet). 302 = Browser-Redirect zur Affiliate-URL, funktioniert immer. 200 nur, wenn die Site auf Daniels eigenem Netlify-Account liegt (wie `/daniel/*`).
 
 **Schritt 2: Hub-Site neu deployen** (Hub ist mit Netlify-CLI verknüpft)
 
