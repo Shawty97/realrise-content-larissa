@@ -5,7 +5,7 @@
 #     (blauer Marken-Button, Consent + Honeypot, kein example.com) — Block A
 #   • Farb-Identität: KONSEQUENT BLAU (kein Gold/Lila mehr)
 #   • Nummern überall als identisches Badge · Code-Boxen solid · Eyebrows einheitlich
-#   • Early-Access: Benefits-Liste (Gold-✓) + Trust-Reihe (nie nur 1 Satz)
+#   • Early-Access: Benefits-Liste (blaue ✓) + Trust-Reihe (nie nur 1 Satz)
 #   • iframe + form_embed.js entfallen komplett
 #   • Footer (Impressum + Datenschutz) als Pflicht-Code-Block — Block C
 #   • SKALIER-FIXES (für externe Affiliates wichtig!):
@@ -358,7 +358,7 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
 body {
   background-color: var(--cream);
   background-image:
-    radial-gradient(circle at 12% 0%, rgba(216,180,90,0.18) 0%, transparent 28rem),
+    radial-gradient(circle at 12% 0%, rgba(49,87,213,0.18) 0%, transparent 28rem),
     radial-gradient(circle at 88% 6%, rgba(49,87,213,0.12) 0%, transparent 30rem);
 }
 ```
@@ -401,10 +401,14 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.32em;   /* sehr weit — Erkennungsmerkmal */
+  color: rgba(49,87,213,0.76);   /* IMMER blau — kein Gold */
 }
 .eyebrow::before {
-  background: linear-gradient(90deg, var(--blue), var(--warm) 52%, transparent);
+  background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent);
 }
+/* auf dunklen Sektionen: identisch, nur minimal heller */
+.eyebrow-dark { color: rgba(49,87,213,0.72); }
+.eyebrow-dark::before { background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
 ```
 
 ### Section Title — tight
@@ -420,9 +424,9 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
 ### Instagram CTA Card (letzter Slot in Dark Section — immer!)
 
 ```html
-<div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(49,87,213,0.08), rgba(180,107,78,0.06)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+<div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(49,87,213,0.10), rgba(49,87,213,0.04)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
   <div>
-    <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase; margin-bottom:16px;">Täglich neues KI-Wissen</div>
+    <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; color:var(--blue); text-transform:uppercase; margin-bottom:16px;">Täglich neues KI-Wissen</div>
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,30px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; color:#f0ece4;">
       Jeden Tag ein Tipp der dir wirklich Zeit spart.
     </p>
@@ -462,13 +466,13 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
 ### Early Access — Bühne mit Benefits + Trust (Pflicht — macht's „beitretens-wert")
 
 Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 Satz wirkt schwach, nicht wie etwas wo man beitreten will). Immer:
-- 3–4 **konkrete Benefits** mit Gold-Checkmark — nur **WAHRE** Aussagen, keine erfundenen Zahlen (Wahrheitspflicht!)
+- 3–4 **konkrete Benefits** mit **blauem Checkmark** — nur **WAHRE** Aussagen, keine erfundenen Zahlen (Wahrheitspflicht!)
 - Eine **Trust-Reihe** unten: Kostenlos · Kein Spam · Jederzeit verlassen
 
 ```css
 .early-benefits { list-style:none; margin:28px 0 0; display:flex; flex-direction:column; gap:13px; }
 .early-benefits li { display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:rgba(240,236,228,0.82); line-height:1.5; }
-.early-benefits li::before { content:'✓'; color:var(--gold); font-weight:700; font-size:13px; margin-top:1px; flex-shrink:0; }
+.early-benefits li::before { content:'✓'; color:var(--blue); font-weight:700; font-size:13px; margin-top:1px; flex-shrink:0; }
 .early-trust { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:30px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(240,236,228,0.42); }
 .early-trust .trust-dot { opacity:0.4; }
 ```
@@ -486,29 +490,29 @@ Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 
 </div>
 ```
 
-### Dunkle Sektionen & CTA — GOLD-Akzent (NIE grelles Blau auf Dunkel!)
+### Dunkle Sektionen & CTA — KONSEQUENT BLAU (kein Gold/Lila!)
 
-Auf dunklen Flächen (Dark-Section, CTA-Banner, Early-Access) sind die Akzente **Gold/Warm** — grelles Solid-Blau wirkt „zusammengewürfelt / AI-gebastelt".
-- **Eyebrow:** gold (`rgba(216,180,90,0.85)`) mit Gradient-Linie gold→warm
-- **Headline-em:** Gradient `blue → #6f72a8 → warm` (oder gold-italic)
-- **Buttons auf Dunkel:** **Gold-Button** (`background:var(--gold); color:#1a1714`) — NIEMALS solid-blue
-- **Glows:** warme gold/braun radial-gradients (kein grelles Blau)
-- **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **Gold-Haarlinie** oben
+⚠️ **Wichtigste Farb-Regel:** Blau (`--blue #3157d5`) ist die **EINZIGE Akzentfarbe** — auf hell UND auf dunkel. **Kein Gold, kein Warm, kein Lila-Gradient.** Gemischte Akzente wirken „zusammengewürfelt / AI-gebastelt". Einzige Ausnahme: **Grün `#22A155`** nur für den live-Punkt + Trust-Häkchen (✓ Kostenlos etc.).
+- **Eyebrow:** blau (`rgba(49,87,213,0.72)`) mit Gradient-Linie blau→blau
+- **Headline-em:** **solid blau** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN blue→lila→warm-Gradient
+- **Buttons auf Dunkel:** **solid blau** (`background:var(--blue); color:#fff`) — KEIN Gold
+- **Glows:** blaue radial-gradients (kein Gold/Braun)
+- **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **blaue Haarlinie** oben
 
 ```css
-/* Gold-Button auf Dunkel */
-.btn-cta { background:var(--gold); color:#1a1714; font-weight:500; box-shadow:0 10px 30px -10px rgba(216,180,90,0.5); }
-.btn-cta:hover { background:#e4c374; transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(216,180,90,0.6); }
-/* Dunkles CTA-Banner: warme Glows + Grid + Gold-Hairline */
+/* Blue-Button auf Dunkel */
+.btn-cta { background:var(--blue); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(49,87,213,0.55); }
+.btn-cta:hover { background:var(--blue-2); transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(49,87,213,0.65); }
+/* Dunkles CTA-Banner: blaue Glows + Grid + blaue Hairline */
 .cta-inner {
   background: var(--dark-2);
   background-image:
-    radial-gradient(ellipse at 82% 0%, rgba(216,180,90,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 2% 100%, rgba(180,107,78,0.10) 0%, transparent 52%);
+    radial-gradient(ellipse at 82% 0%, rgba(49,87,213,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 2% 100%, rgba(49,87,213,0.08) 0%, transparent 52%);
   border: 1px solid rgba(255,255,255,0.07);
 }
 .cta-inner::before { /* dezentes Grid, radial-maskiert */ }
-.cta-inner::after  { /* 1px Gold-Haarlinie oben: linear-gradient(90deg, transparent, gold, warm, transparent) */ }
+.cta-inner::after  { /* 1px blaue Haarlinie oben: linear-gradient(90deg, transparent, var(--blue), transparent) */ }
 ```
 
 ### Nummern-Badge (ÜBERALL identisch — Steps, Top-N, Dark-Section, Bonus)
@@ -555,11 +559,12 @@ Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE 
 - [ ] Alle 4 Keyframes vorhanden?
 - [ ] Normale Cards: warm-brown shadow; Hero/Form-Cards: blue-glow?
 - [ ] Instagram CTA Card ([INSTAGRAM]) als letzter Slot in Dark Section?
-- [ ] Dunkle Sektionen/CTA: GOLD-Akzente + Gold-Button (KEIN grelles Solid-Blau)?
-- [ ] Early Access: Benefits-Liste (Gold-✓) + Trust-Reihe (nicht nur 1 Satz)?
+- [ ] Dunkle Sektionen/CTA: BLAUE Akzente + solid-blauer Button (KEIN Gold/Warm/Lila)?
+- [ ] Early Access: Benefits-Liste (blaue ✓) + Trust-Reihe (nicht nur 1 Satz)?
 - [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = blue-pale/blau · dunkel = blue-tint/#7fa4f5)
 - [ ] Code-Boxen ÜBERALL solid `#1a1714` (kein halbtransparentes Grau auf hellen Cards)?
-- [ ] Eyebrows einheitlich: Mono + Gradient-Linie (hell blau→warm · dunkel gold→warm)?
+- [ ] Eyebrows einheitlich: Mono + blaue Gradient-Linie (blau→blau, hell wie dunkel) — NIE warm/gold?
+- [ ] KONSEQUENT BLAU: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
 - [ ] Scroll Reveal vorhanden?
 - [ ] `@media (max-width: 900px)` Block vorhanden?
 
@@ -585,7 +590,7 @@ Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE 
 4. **TOP 3** (Grid ✅) — 3× prompt-card, warm-brown shadow
 5. **ALLE X DARK** (Grid ❌) — Canvas-Animation, X× dark-prompt-card + Instagram-CTA-Card
 6. **BONUS** (Grid ❌) — 4× bonus-card
-7. **EARLY ACCESS DARK** (Grid ✅ dezent) — Links: Headline + **Benefits-Liste (Gold-✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`) in weißem Wrapper
+7. **EARLY ACCESS DARK** (Grid ✅ dezent) — Links: Headline + **Benefits-Liste (blaue ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`) in weißem Wrapper
 8. **FOOTER** — Block C 1:1 übernehmen (Impressum + Datenschutz → realrise-agency.com, Pflicht!)
 9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Canvas-IIFE → Scroll-Reveal-IIFE
 
