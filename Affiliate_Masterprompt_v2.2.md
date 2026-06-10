@@ -532,6 +532,17 @@ Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE 
 
 ---
 
+### 🔧 Farb-Korrektur (Alt-Seite auf konsequent blau umfärben)
+
+Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), diesen Befehl an Claude geben:
+
+> Mach die Seite konsequent blau. Ersetze ALLE Gold-/Warm-/Lila-Akzente durch Blau `#3157d5`:
+> Eyebrows, Buttons (auch auf Dunkel = solid blau), Checkmarks, Glows/Radial-Gradients, Headline-Kursiv-Betonungen (`em`), Body-Blobs, Card-Hintergründe.
+> Einzige Ausnahmen, die bleiben: Grün `#22A155` für live-Punkt + Trust-Häkchen, der warm-braune Card-Schatten, die Grid-Linie und der Instagram-Marken-Button (Instagrams eigene Farben).
+> Kein Gold, kein `--warm` als Akzent, kein Lila-Gradient mehr.
+
+---
+
 ## ✅ QUALITY CHECK VOR JEDER PAGE (Pflicht)
 
 **Meta Pixel:**
