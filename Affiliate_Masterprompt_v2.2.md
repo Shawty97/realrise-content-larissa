@@ -342,7 +342,7 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
   --border-med:    rgba(32,40,58,0.16);
   /* Warm-brown: normale Cards */
   --shadow-card-warm: 0 24px 70px -46px rgba(55,39,25,0.55);
-  /* Blue-glow: nur hero-card & early-right-card */
+  /* Orange-Glow: nur hero-card & early-right-card */
   --shadow-card-blue: 0 20px 70px -58px rgba(32,40,58,0.70), 0 28px 80px -54px rgba(204,120,92,0.48);
   --shadow-dark:   0 26px 80px -56px rgba(23,19,18,0.90), 0 30px 90px -54px rgba(204,120,92,0.50);
   --code-bg:       #1a1714;
@@ -379,7 +379,7 @@ body {
 
 ```
 Normale Cards (step / prompt-card / bonus-card) → NUR warm-brown
-Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
+Hero-Card & Early-Access-Card → Orange-Glow (= Featured-Signal)
 ```
 
 ### Hero Stage (Pflicht — macht den Premium-Look)
@@ -495,13 +495,13 @@ Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 
 
 ⚠️ **Wichtigste Farb-Regel:** Claude-Orange (`--blue` = `#cc785c`) ist die **EINZIGE Akzentfarbe** — auf hell UND auf dunkel. **Kein Gold, kein Warm, kein Lila-Gradient.** Gemischte Akzente wirken „zusammengewürfelt / AI-gebastelt". Einzige Ausnahme: **Grün `#22A155`** nur für den live-Punkt + Trust-Häkchen (✓ Kostenlos etc.).
 - **Eyebrow:** Claude-orange (`rgba(204,120,92,0.72)`) mit Gradient-Linie orange→orange
-- **Headline-em:** **solid orange** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN blue→lila→warm-Gradient
+- **Headline-em:** **solid orange** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN orange→lila→warm-Gradient
 - **Buttons auf Dunkel:** **solid orange** (`background:var(--blue); color:#fff`) — KEIN Gold
 - **Glows:** orange radial-gradients (kein Gold/Braun)
 - **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **orange Haarlinie** oben
 
 ```css
-/* Blue-Button auf Dunkel */
+/* Orange-Button auf Dunkel */
 .btn-cta { background:var(--blue); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(204,120,92,0.55); }
 .btn-cta:hover { background:var(--blue-2); transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(204,120,92,0.65); }
 /* Dunkles CTA-Banner: orange Glows + Grid + orange Hairline */
@@ -569,11 +569,11 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] Hero und Top3 haben Grid, How-to und Bonus nicht?
 - [ ] hero-stage + hero-energy-field + hero-scanline vorhanden?
 - [ ] Alle 4 Keyframes vorhanden?
-- [ ] Normale Cards: warm-brown shadow; Hero/Form-Cards: blue-glow?
+- [ ] Normale Cards: warm-brown shadow; Hero/Form-Cards: orange-glow?
 - [ ] Instagram CTA Card ([INSTAGRAM]) als letzter Slot in Dark Section?
 - [ ] Dunkle Sektionen/CTA: ORANGE Akzente + solid-oranger Button (KEIN Gold/Warm/Lila)?
 - [ ] Early Access: Benefits-Liste (orange ✓) + Trust-Reihe (nicht nur 1 Satz)?
-- [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = blue-pale/blau · dunkel = blue-tint/#e0a890)
+- [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = orange-pale/orange · dunkel = orange-tint/#e0a890)
 - [ ] Code-Boxen ÜBERALL solid `#1a1714` (kein halbtransparentes Grau auf hellen Cards)?
 - [ ] Eyebrows einheitlich: Mono + orange Gradient-Linie (orange→orange, hell wie dunkel) — NIE warm/gold?
 - [ ] KONSEQUENT CLAUDE-ORANGE: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
@@ -597,7 +597,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 **Fonts:** Cormorant Garamond · DM Mono · DM Sans (Google Fonts)
 
 1. **NAV** — Fixed, glasmorphism, Links: „RealRise / [THEMA]", Rechts: „Top 3" · „Alle [X]" · „Bonus" · „Community"
-2. **HERO** (Grid ✅) — hero-stage + energy-field + scanline, Links: H1 + Subtitle, Rechts: hero-card (blue-glow) + **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`)
+2. **HERO** (Grid ✅) — hero-stage + energy-field + scanline, Links: H1 + Subtitle, Rechts: hero-card (orange-glow) + **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`)
 3. **HOW TO USE** (Grid ❌) — 3 Steps, warm-brown shadow
 4. **TOP 3** (Grid ✅) — 3× prompt-card, warm-brown shadow
 5. **ALLE X DARK** (Grid ❌) — Canvas-Animation, X× dark-prompt-card + Instagram-CTA-Card
@@ -645,7 +645,7 @@ Jeder Lead wird automatisch:
 **Design:**
 10. Plumpe Schatten `0 4px 24px rgba(...)` → billig wirken
 11. Grid auf body → sichtbare Breaks zwischen Sections
-12. Blue-shadow auf normalen Cards → Featured-Signal geht verloren
+12. Orange-shadow auf normalen Cards → Featured-Signal geht verloren
 13. Grid-Farbe cool-blau statt warm → wirkt kalt
 
 **Deploy:**
