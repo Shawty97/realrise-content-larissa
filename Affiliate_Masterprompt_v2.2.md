@@ -581,6 +581,32 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 
 ---
 
+## 🧩 LAYOUT FOLGT DEM CONTENT-TYP (nicht stur dasselbe Skelett!)
+
+⚠️ **Wichtigstes Page-Prinzip:** Die Struktur muss zum **Thema** passen — nicht jedes Reel ist „6 Prompts". Wähle das Layout nach Content-Typ:
+
+| Content-Typ | Bestes Layout |
+|---|---|
+| **Vergleich / „X vs Y" / „wann was"** | **2 VS-Cards nebeneinander + Entscheidungs-Tabelle** („Deine Aufgabe → Nimm") + „so stellst du um"-Steps. Viel scanbarer & überzeugender als Prompt-Listen. |
+| **„X Prompts / Hacks / Tipps"** | Top-3-Cards (mit Code-Box zum Kopieren) + Dark-Grid mit allen X + Bonus |
+| **Anleitung / Setup („in X Schritten")** | Nummerierte Steps groß + Code-Boxen pro Schritt |
+| **Tool/Feature-Vorstellung** | Fakten-Cards (3×) + „so nutzt du es"-Steps + Beispiel |
+
+Das Design-System (Farben, Fonts, Hero, Eyebrows, Dark-Section, Custom-Form, Footer, Claude-Orange) bleibt **immer identisch** — nur die **Sektions-Bausteine in der Mitte** richten sich nach dem Thema.
+
+### VS-Pattern (für Vergleichs-Themen) — Bausteine:
+- **Hero** mit optionalem Warn-Banner (`.req-banner`) für ein Zeitfenster/Vorsicht-Hinweis
+- **3 Fakten-Cards** (`.cards3` / `.pc` mit großer Zahl `.big`)
+- **Dark „Entscheidung"-Sektion:** 2 `.vs-card` (eine `.opus`, eine `.fable` hervorgehoben) + `.dtable` (Aufgabe→Modell) + `.switch` (nummerierte „so stellst du um"-Steps)
+- **Quellen-Zeile** (`.honest`) unter der Tabelle
+
+### ⚠️ Zahlen & Quellen (Wahrheitspflicht — hart!):
+- **Konkrete Zahlen schlagen vages Hedging** ($10/$50 statt „kostet mehr") — ABER **nur wenn verifiziert.**
+- Behauptest du Preise/Daten/Benchmarks → **erst recherchieren/bestätigen**, dann eine **Quelle** angeben (z.B. `platform.claude.com/docs`).
+- Nicht verifizierbar → qualitativ formulieren oder weglassen. Niemals Zahlen aus einem fremden Reel ungeprüft übernehmen.
+
+---
+
 ## FUNNEL-PAGE STRUKTUR
 
 **Fonts:** Cormorant Garamond · DM Mono · DM Sans (Google Fonts)
