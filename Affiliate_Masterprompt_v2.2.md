@@ -8,6 +8,7 @@
 #   • Early-Access: Benefits-Liste (orange ✓) + Trust-Reihe (nie nur 1 Satz)
 #   • iframe + form_embed.js entfallen komplett
 #   • Footer (Impressum + Datenschutz) als Pflicht-Code-Block — Block C
+#   • Deploy: Claude deployt direkt via Netlify-CLI (kein ZIP/manuelles Hochladen) — Affiliate kriegt nur den Live-Link
 #   • SKALIER-FIXES (für externe Affiliates wichtig!):
 #       – Redirect nach Anmeldung = absolute Hub-URL (kein 404 mehr)
 #       – Pflicht-Test-Lead nach jedem Deploy (fängt Silent-Webhook-Fail)
@@ -117,45 +118,33 @@ Erst wenn die Hub-Site redeployed ist → Affiliate kann loslegen.
 
 ---
 
-## DEPLOY-WORKFLOW — ZWEI ORDNER SYSTEM (kritisch!)
+## DEPLOY-WORKFLOW — Claude deployt DIREKT via Netlify-CLI (kein ZIP!)
 
-**⚠️ KRITISCH — Live-Ordner ≠ Staging-Ordner:**
-Das ZIP muss IMMER aus dem **Live-Ordner** gebaut werden. Netlify-Deploys ersetzen das gesamte Site-Verzeichnis — was nicht im ZIP ist, wird live **gelöscht**.
+**So läuft's (Standard — kein manuelles Hochladen mehr):** Claude baut die Page und **deployt sie selbst** direkt auf die Netlify-Site des Affiliates. Der Affiliate muss **nichts** zippen, nichts hochladen — bekommt nur den **fertigen Live-Link**. Genau dieser Komfort ist gewollt.
 
-**Ordner-Struktur:**
-```
-Staging-Ordner (neue Pages werden hier gebaut):
-→ [thema].html kommt hier zuerst hin
+**⚠️ EINMALIGE Voraussetzung (pro Affiliate, einmal eingerichtet):**
+- Netlify-CLI ist da (läuft via `npx netlify-cli@latest`, keine globale Installation nötig)
+- Affiliate ist **einmal eingeloggt**: `npx netlify-cli@latest login` (öffnet Browser → Netlify-Konto verbinden)
+- Die **Site-ID** der Affiliate-Site ist bekannt (`npx netlify-cli@latest sites:list` zeigt sie, oder Netlify → Site → Settings → Site ID)
 
-Live-Ordner (enthält ALLE bisherigen Pages + _redirects + index.html):
-→ Von hier wird das ZIP gebaut und auf Netlify hochgeladen
-```
+**⚠️ KRITISCH — der Deploy ersetzt das GESAMTE Site-Verzeichnis:**
+Alle bisherigen Pages + `_redirects` + `index.html` müssen im **Deploy-Ordner** liegen. Was nicht drin ist, wird live **gelöscht**. Also IMMER aus dem vollständigen Ordner deployen, nie nur die neue Datei.
 
 **⚠️ Dateiname-Regel (`[thema]`):** Immer **nur Kleinbuchstaben, Bindestriche statt Leerzeichen, keine Umlaute/Sonderzeichen**.
 Beispiel: „Prompts für Anfänger" → `prompts-fuer-anfaenger.html` (ä→ae, ö→oe, ü→ue, ß→ss). Umlaute/Leerzeichen im Dateinamen = kaputte URL = 404.
 
 **Pro Deploy — exakt in dieser Reihenfolge:**
-1. Claude baut neue `[thema].html` im **Staging-Ordner**
-2. Claude kopiert die Page in den **Live-Ordner**
-3. Claude erweitert `_redirects` im **Live-Ordner** um neue Zeile
-4. Claude zippt den **kompletten Live-Ordner**
-5. Affiliate lädt ZIP auf `[NETLIFY]` hoch (über „browse files to upload")
-6. Netlify entpackt + deployt → Public-URL funktioniert sofort
-7. **PFLICHT-TEST: einen echten Test-Lead absenden** — Formular mit Test-Vorname + eigener E-Mail ausfüllen, abschicken, dann in GHL prüfen ob der Kontakt mit Tag `aff:[NAME]` ankommt. Erst danach das Reel posten.
+1. Claude baut neue `[thema].html` im **Pages-Ordner** (= der Ordner mit allen Pages + `_redirects` + `index.html`)
+2. Claude erweitert `_redirects` um die neue Zeile (`/[thema]  /[thema].html  200`)
+3. **Claude deployt selbst** aus dem Ordner:
+   ```bash
+   cd ~/PFAD/ZUM/PAGES-ORDNER && npx netlify-cli@latest deploy --prod --dir="." --site="[SITE-ID]"
+   ```
+   → Netlify deployt sofort, Claude gibt dem Affiliate direkt den **Live-Link** (`ki.realrise-agency.com/[NAME]/[thema]`).
+4. **PFLICHT-TEST: einen echten Test-Lead absenden** — Formular mit Test-Vorname + eigener E-Mail ausfüllen, abschicken, dann in GHL prüfen ob der Kontakt mit Tag `aff:[NAME]` ankommt. Erst danach das Reel posten.
    → Das ist die EINZIGE Absicherung gegen den Silent-Fail (Webhook-Tippfehler → Leads kommen still nicht an, ohne Fehlermeldung). Test-Kontakt danach in GHL löschen.
 
-**ZIP-Befehl Windows (PowerShell):**
-```powershell
-$src = "PFAD\ZUM\LIVE-ORDNER"
-$dst = "PFAD\ZUM\DESKTOP\[NAME]-netlify-deploy.zip"
-if (Test-Path $dst) { Remove-Item $dst -Force }
-Compress-Archive -Path "$src\*" -DestinationPath $dst -Force
-```
-
-**ZIP-Befehl Mac (Bash):**
-```bash
-cd ~/PFAD/ZUM/LIVE-ORDNER && zip -r ~/Desktop/[NAME]-netlify-deploy.zip . -x ".DS_Store"
-```
+> Kein ZIP, kein „browse files to upload" mehr. Falls die CLI mal nicht eingeloggt ist (`npx netlify-cli@latest status` prüfen) → einmal `login`, dann wieder direkt deployen.
 
 ---
 
@@ -585,7 +574,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] HTML flat im Root (kein Subordner)?
 - [ ] `_redirects` hat neue Zeile für das Thema?
 - [ ] `_redirects` hat `/[NAME]/* /:splat 302` ganz oben?
-- [ ] ZIP aus **Live-Ordner** gebaut (nicht Staging)?
+- [ ] Direkt via `netlify-cli deploy --prod` deployed (kompletter Pages-Ordner, nicht nur die neue Datei)?
 - [ ] **NACH Deploy: echter Test-Lead abgesendet + in GHL mit `aff:[NAME]` angekommen?** (Pflicht — fängt den Silent-Webhook-Fail)
 
 **Bei ❌ → Fehler beheben → nochmal prüfen → dann liefern.**
@@ -637,7 +626,7 @@ Jeder Lead wird automatisch:
 3. Consent-Checkbox oder Honeypot (`.rr-hp`) vergessen → DSGVO-Risiko + Spam
 4. `/[NAME]/*` fehlt in `_redirects` → 404
 5. `?source=`/`data-source` falscher Affiliate → Leads falsch zugeordnet
-6. ZIP aus Staging statt Live → alle anderen Pages gelöscht
+6. Aus unvollständigem Ordner deployed → alle anderen Pages gelöscht (immer den ganzen Pages-Ordner via netlify-cli deployen)
 7. Redirect `/vip` relativ statt absolut → Lead landet nach Anmeldung im 404 (VIP-Seite liegt auf Hub-Site!)
 8. Dateiname mit Umlaut/Leerzeichen → URL kaputt → 404
 9. Kein Test-Lead gemacht → Webhook-Fehler bleibt unbemerkt, Reel läuft, Leads gehen verloren
