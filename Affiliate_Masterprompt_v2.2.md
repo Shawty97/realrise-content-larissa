@@ -2,10 +2,10 @@
 # ──────────────────────────────────────────────────────────
 # 🆕 NEU IN v2.2 (bitte ab jetzt diese Version nutzen):
 #   • Opt-in-Formular: eigenes Custom-Formular statt GHL-iframe
-#     (blauer Marken-Button, Consent + Honeypot, kein example.com) — Block A
-#   • Farb-Identität: KONSEQUENT BLAU (kein Gold/Lila mehr)
+#     (Claude-oranger Marken-Button, Consent + Honeypot, kein example.com) — Block A
+#   • Farb-Identität: KONSEQUENT CLAUDE-ORANGE #CC785C (Akzent überall, kein Blau/Gold/Lila)
 #   • Nummern überall als identisches Badge · Code-Boxen solid · Eyebrows einheitlich
-#   • Early-Access: Benefits-Liste (blaue ✓) + Trust-Reihe (nie nur 1 Satz)
+#   • Early-Access: Benefits-Liste (orange ✓) + Trust-Reihe (nie nur 1 Satz)
 #   • iframe + form_embed.js entfallen komplett
 #   • Footer (Impressum + Datenschutz) als Pflicht-Code-Block — Block C
 #   • SKALIER-FIXES (für externe Affiliates wichtig!):
@@ -188,7 +188,7 @@ Technisch validiert und Mobile-getestet. Variation = Bugs auf Mobile.
 
 ### A. Lead-Formular → GHL Inbound Webhook (im Hero UND in der Early-Access-Sektion)
 
-Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in-Webhook. Volle Design-Kontrolle, blauer Marken-Button, eigene Legal-Links, Consent + Honeypot (DSGVO + Spam). **Komplett 1:1 übernehmen.**
+Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in-Webhook. Volle Design-Kontrolle, Claude-oranger Marken-Button, eigene Legal-Links, Consent + Honeypot (DSGVO + Spam). **Komplett 1:1 übernehmen.**
 
 **Pflicht:**
 - `data-source="[NAME]"` → steuert automatisch `aff:[NAME]` (dein Tracking-Tag)
@@ -204,12 +204,12 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 .rr-field{display:flex;flex-direction:column;gap:6px}
 .rr-field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .rr-field input{width:100%;padding:13px 15px;background:#fff;border:1.5px solid var(--border-med);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--dark-nav)}
-.rr-field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(49,87,213,.12)}
+.rr-field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(204,120,92,.12)}
 .rr-consent{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.45;color:var(--muted);cursor:pointer}
 .rr-consent input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--blue)}
 .rr-consent a{color:var(--blue);text-decoration:underline}
-.rr-submit{width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 26px -10px rgba(49,87,213,.55)}
-.rr-submit:hover{background:#294abd;transform:translateY(-1px)}
+.rr-submit{width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 26px -10px rgba(204,120,92,.55)}
+.rr-submit:hover{background:#b5634a;transform:translateY(-1px)}
 .rr-submit:disabled{opacity:.6;cursor:not-allowed}
 .rr-trust{display:flex;gap:14px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--muted)}
 .rr-trust span::before{content:'✓';color:#22A155;margin-right:5px;font-weight:700}
@@ -332,8 +332,9 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
   --dark:          #0f0f0f;
   --dark-2:        #1a1714;
   --dark-nav:      #20283a;
-  --blue:          #3157d5;
-  --blue-pale:     #eef2fb;
+  /* ⚠️ Akzentfarbe = Claude-Terracotta #cc785c. Variable heißt historisch --blue, enthält aber ORANGE. */
+  --blue:          #cc785c;
+  --blue-pale:     #f8efe9;
   --gold:          #d8b45a;
   --warm:          #b46b4e;
   --muted:         #586174;
@@ -342,8 +343,8 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
   /* Warm-brown: normale Cards */
   --shadow-card-warm: 0 24px 70px -46px rgba(55,39,25,0.55);
   /* Blue-glow: nur hero-card & early-right-card */
-  --shadow-card-blue: 0 20px 70px -58px rgba(32,40,58,0.70), 0 28px 80px -54px rgba(49,87,213,0.48);
-  --shadow-dark:   0 26px 80px -56px rgba(23,19,18,0.90), 0 30px 90px -54px rgba(49,87,213,0.50);
+  --shadow-card-blue: 0 20px 70px -58px rgba(32,40,58,0.70), 0 28px 80px -54px rgba(204,120,92,0.48);
+  --shadow-dark:   0 26px 80px -56px rgba(23,19,18,0.90), 0 30px 90px -54px rgba(204,120,92,0.50);
   --code-bg:       #1a1714;
   --code-fg:       #f0ece4;
   --max-w:         1200px;
@@ -358,8 +359,8 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
 body {
   background-color: var(--cream);
   background-image:
-    radial-gradient(circle at 12% 0%, rgba(49,87,213,0.18) 0%, transparent 28rem),
-    radial-gradient(circle at 88% 6%, rgba(49,87,213,0.12) 0%, transparent 30rem);
+    radial-gradient(circle at 12% 0%, rgba(204,120,92,0.18) 0%, transparent 28rem),
+    radial-gradient(circle at 88% 6%, rgba(204,120,92,0.12) 0%, transparent 30rem);
 }
 ```
 
@@ -391,7 +392,7 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
 ```
 
 + `.hero-energy-field` (animierte Diagonallinien)
-+ `.hero-scanline` (animierte blaue Linie)
++ `.hero-scanline` (animierte orange Linie)
 + Alle 4 Keyframes: `hero-stage-rise`, `hero-energy-pan`, `hero-scanline-pass`, `hero-word-pop`
 
 ### Eyebrow-Stil
@@ -401,13 +402,13 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.32em;   /* sehr weit — Erkennungsmerkmal */
-  color: rgba(49,87,213,0.76);   /* IMMER blau — kein Gold */
+  color: rgba(204,120,92,0.76);   /* IMMER Claude-Orange (#CC785C) — kein Blau/Gold */
 }
 .eyebrow::before {
   background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent);
 }
 /* auf dunklen Sektionen: identisch, nur minimal heller */
-.eyebrow-dark { color: rgba(49,87,213,0.72); }
+.eyebrow-dark { color: rgba(204,120,92,0.72); }
 .eyebrow-dark::before { background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
 ```
 
@@ -424,7 +425,7 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
 ### Instagram CTA Card (letzter Slot in Dark Section — immer!)
 
 ```html
-<div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(49,87,213,0.10), rgba(49,87,213,0.04)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+<div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(204,120,92,0.10), rgba(204,120,92,0.04)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
   <div>
     <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; color:var(--blue); text-transform:uppercase; margin-bottom:16px;">Täglich neues KI-Wissen</div>
     <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,30px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; color:#f0ece4;">
@@ -466,7 +467,7 @@ Hero-Card & Early-Access-Card → Blue-Glow (= Featured-Signal)
 ### Early Access — Bühne mit Benefits + Trust (Pflicht — macht's „beitretens-wert")
 
 Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 Satz wirkt schwach, nicht wie etwas wo man beitreten will). Immer:
-- 3–4 **konkrete Benefits** mit **blauem Checkmark** — nur **WAHRE** Aussagen, keine erfundenen Zahlen (Wahrheitspflicht!)
+- 3–4 **konkrete Benefits** mit **orangem Checkmark** — nur **WAHRE** Aussagen, keine erfundenen Zahlen (Wahrheitspflicht!)
 - Eine **Trust-Reihe** unten: Kostenlos · Kein Spam · Jederzeit verlassen
 
 ```css
@@ -490,29 +491,29 @@ Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 
 </div>
 ```
 
-### Dunkle Sektionen & CTA — KONSEQUENT BLAU (kein Gold/Lila!)
+### Dunkle Sektionen & CTA — KONSEQUENT CLAUDE-ORANGE (kein Gold/Lila!)
 
-⚠️ **Wichtigste Farb-Regel:** Blau (`--blue #3157d5`) ist die **EINZIGE Akzentfarbe** — auf hell UND auf dunkel. **Kein Gold, kein Warm, kein Lila-Gradient.** Gemischte Akzente wirken „zusammengewürfelt / AI-gebastelt". Einzige Ausnahme: **Grün `#22A155`** nur für den live-Punkt + Trust-Häkchen (✓ Kostenlos etc.).
-- **Eyebrow:** blau (`rgba(49,87,213,0.72)`) mit Gradient-Linie blau→blau
-- **Headline-em:** **solid blau** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN blue→lila→warm-Gradient
-- **Buttons auf Dunkel:** **solid blau** (`background:var(--blue); color:#fff`) — KEIN Gold
-- **Glows:** blaue radial-gradients (kein Gold/Braun)
-- **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **blaue Haarlinie** oben
+⚠️ **Wichtigste Farb-Regel:** Claude-Orange (`--blue` = `#cc785c`) ist die **EINZIGE Akzentfarbe** — auf hell UND auf dunkel. **Kein Gold, kein Warm, kein Lila-Gradient.** Gemischte Akzente wirken „zusammengewürfelt / AI-gebastelt". Einzige Ausnahme: **Grün `#22A155`** nur für den live-Punkt + Trust-Häkchen (✓ Kostenlos etc.).
+- **Eyebrow:** Claude-orange (`rgba(204,120,92,0.72)`) mit Gradient-Linie orange→orange
+- **Headline-em:** **solid orange** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN blue→lila→warm-Gradient
+- **Buttons auf Dunkel:** **solid orange** (`background:var(--blue); color:#fff`) — KEIN Gold
+- **Glows:** orange radial-gradients (kein Gold/Braun)
+- **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **orange Haarlinie** oben
 
 ```css
 /* Blue-Button auf Dunkel */
-.btn-cta { background:var(--blue); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(49,87,213,0.55); }
-.btn-cta:hover { background:var(--blue-2); transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(49,87,213,0.65); }
-/* Dunkles CTA-Banner: blaue Glows + Grid + blaue Hairline */
+.btn-cta { background:var(--blue); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(204,120,92,0.55); }
+.btn-cta:hover { background:var(--blue-2); transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(204,120,92,0.65); }
+/* Dunkles CTA-Banner: orange Glows + Grid + orange Hairline */
 .cta-inner {
   background: var(--dark-2);
   background-image:
-    radial-gradient(ellipse at 82% 0%, rgba(49,87,213,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 2% 100%, rgba(49,87,213,0.08) 0%, transparent 52%);
+    radial-gradient(ellipse at 82% 0%, rgba(204,120,92,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 2% 100%, rgba(204,120,92,0.08) 0%, transparent 52%);
   border: 1px solid rgba(255,255,255,0.07);
 }
 .cta-inner::before { /* dezentes Grid, radial-maskiert */ }
-.cta-inner::after  { /* 1px blaue Haarlinie oben: linear-gradient(90deg, transparent, var(--blue), transparent) */ }
+.cta-inner::after  { /* 1px orange Haarlinie oben: linear-gradient(90deg, transparent, var(--blue), transparent) */ }
 ```
 
 ### Nummern-Badge (ÜBERALL identisch — Steps, Top-N, Dark-Section, Bonus)
@@ -521,9 +522,9 @@ Jede Nummerierung = **dasselbe Badge**. KEINE Text-Nummern, keine Suffixe wie �
 
 ```css
 /* hell (Steps, Top-N, Bonus) */
-.num-badge { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; background:var(--blue-pale); border:1px solid rgba(49,87,213,0.15); font-family:'DM Mono',monospace; font-size:12px; font-weight:500; color:var(--blue); margin-bottom:16px; flex-shrink:0; }
+.num-badge { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; background:var(--blue-pale); border:1px solid rgba(204,120,92,0.15); font-family:'DM Mono',monospace; font-size:12px; font-weight:500; color:var(--blue); margin-bottom:16px; flex-shrink:0; }
 /* dunkel (Dark-Section) */
-.num-badge--dark { background:rgba(49,87,213,0.16); border-color:rgba(49,87,213,0.26); color:#7fa4f5; }
+.num-badge--dark { background:rgba(204,120,92,0.16); border-color:rgba(204,120,92,0.26); color:#e0a890; }
 ```
 HTML: `<div class="num-badge">01</div>` — nur die Zahl, nichts dahinter.
 
@@ -532,12 +533,12 @@ Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE 
 
 ---
 
-### 🔧 Farb-Korrektur (Alt-Seite auf konsequent blau umfärben)
+### 🔧 Farb-Korrektur (Alt-Seite auf Claude-Orange umfärben)
 
 Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), diesen Befehl an Claude geben:
 
-> Mach die Seite konsequent blau. Ersetze ALLE Gold-/Warm-/Lila-Akzente durch Blau `#3157d5`:
-> Eyebrows, Buttons (auch auf Dunkel = solid blau), Checkmarks, Glows/Radial-Gradients, Headline-Kursiv-Betonungen (`em`), Body-Blobs, Card-Hintergründe.
+> Mach die Seite konsequent Claude-Orange. Ersetze ALLE Gold-/Warm-/Lila-Akzente durch Claude-Orange `#cc785c`:
+> Eyebrows, Buttons (auch auf Dunkel = solid orange), Checkmarks, Glows/Radial-Gradients, Headline-Kursiv-Betonungen (`em`), Body-Blobs, Card-Hintergründe.
 > Einzige Ausnahmen, die bleiben: Grün `#22A155` für live-Punkt + Trust-Häkchen, der warm-braune Card-Schatten, die Grid-Linie und der Instagram-Marken-Button (Instagrams eigene Farben).
 > Kein Gold, kein `--warm` als Akzent, kein Lila-Gradient mehr.
 
@@ -570,12 +571,12 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] Alle 4 Keyframes vorhanden?
 - [ ] Normale Cards: warm-brown shadow; Hero/Form-Cards: blue-glow?
 - [ ] Instagram CTA Card ([INSTAGRAM]) als letzter Slot in Dark Section?
-- [ ] Dunkle Sektionen/CTA: BLAUE Akzente + solid-blauer Button (KEIN Gold/Warm/Lila)?
-- [ ] Early Access: Benefits-Liste (blaue ✓) + Trust-Reihe (nicht nur 1 Satz)?
-- [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = blue-pale/blau · dunkel = blue-tint/#7fa4f5)
+- [ ] Dunkle Sektionen/CTA: ORANGE Akzente + solid-oranger Button (KEIN Gold/Warm/Lila)?
+- [ ] Early Access: Benefits-Liste (orange ✓) + Trust-Reihe (nicht nur 1 Satz)?
+- [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = blue-pale/blau · dunkel = blue-tint/#e0a890)
 - [ ] Code-Boxen ÜBERALL solid `#1a1714` (kein halbtransparentes Grau auf hellen Cards)?
-- [ ] Eyebrows einheitlich: Mono + blaue Gradient-Linie (blau→blau, hell wie dunkel) — NIE warm/gold?
-- [ ] KONSEQUENT BLAU: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
+- [ ] Eyebrows einheitlich: Mono + orange Gradient-Linie (orange→orange, hell wie dunkel) — NIE warm/gold?
+- [ ] KONSEQUENT CLAUDE-ORANGE: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
 - [ ] Scroll Reveal vorhanden?
 - [ ] `@media (max-width: 900px)` Block vorhanden?
 
@@ -601,7 +602,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 4. **TOP 3** (Grid ✅) — 3× prompt-card, warm-brown shadow
 5. **ALLE X DARK** (Grid ❌) — Canvas-Animation, X× dark-prompt-card + Instagram-CTA-Card
 6. **BONUS** (Grid ❌) — 4× bonus-card
-7. **EARLY ACCESS DARK** (Grid ✅ dezent) — Links: Headline + **Benefits-Liste (blaue ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`) in weißem Wrapper
+7. **EARLY ACCESS DARK** (Grid ✅ dezent) — Links: Headline + **Benefits-Liste (orange ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`) in weißem Wrapper
 8. **FOOTER** — Block C 1:1 übernehmen (Impressum + Datenschutz → realrise-agency.com, Pflicht!)
 9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Canvas-IIFE → Scroll-Reveal-IIFE
 
