@@ -11,7 +11,7 @@
 #   • Deploy: Claude deployt direkt via Netlify-CLI (kein ZIP/manuelles Hochladen) — Affiliate kriegt nur den Live-Link
 #   • SKALIER-FIXES (für externe Affiliates wichtig!):
 #       – Redirect nach Anmeldung = absolute Hub-URL (kein 404 mehr)
-#       – Pflicht-Test-Lead nach jedem Deploy (fängt Silent-Webhook-Fail)
+#       – Auto-Check pro Page + manueller Test-Lead nur bei erster/geänderter Page (fängt Silent-Webhook-Fail ohne Reibung)
 #       – Dateiname-Regel (Kleinbuchstaben, keine Umlaute) gegen 404
 # ──────────────────────────────────────────────────────────
 # VOR DEM ERSTEN EINSATZ: Diese 3 Platzhalter ersetzen:
@@ -141,8 +141,17 @@ Beispiel: „Prompts für Anfänger" → `prompts-fuer-anfaenger.html` (ä→ae,
    cd ~/PFAD/ZUM/PAGES-ORDNER && npx netlify-cli@latest deploy --prod --dir="." --site="[SITE-ID]"
    ```
    → Netlify deployt sofort, Claude gibt dem Affiliate direkt den **Live-Link** (`ki.realrise-agency.com/[NAME]/[thema]`).
-4. **PFLICHT-TEST: einen echten Test-Lead absenden** — Formular mit Test-Vorname + eigener E-Mail ausfüllen, abschicken, dann in GHL prüfen ob der Kontakt mit Tag `aff:[NAME]` ankommt. Erst danach das Reel posten.
-   → Das ist die EINZIGE Absicherung gegen den Silent-Fail (Webhook-Tippfehler → Leads kommen still nicht an, ohne Fehlermeldung). Test-Kontakt danach in GHL löschen.
+4. **AUTOMATISCHER CHECK (bei JEDER Page — Claude macht das selbst, kostet den Affiliate nichts):**
+   Claude prüft die Live-Page direkt nach dem Deploy automatisch:
+   - `curl` auf den Live-Link → Status **200**?
+   - Formular (`.rr-form`) im HTML vorhanden?
+   - **Webhook-URL** korrekt + **`data-source="[NAME]"`** gesetzt + **Redirect absolut** (`https://ki.realrise-agency.com/vip`, nicht relativ)?
+   → Fängt die „Regeneration-Drift" (vertippte Webhook-ID, relativer Redirect, vergessene `_redirects`-Zeile) **lückenlos** ab — besser als ein Stichproben-Test, weil's bei *jeder* Page läuft.
+5. **MANUELLER TEST-LEAD — nur in diesen Fällen nötig:**
+   **(1)** bei der **ersten Page einer Session**, **(2)** nach einem **Template-/Infra-Wechsel**, **(3)** wenn sich **Webhook-URL, Redirect oder `data-source`** geändert haben.
+   → Formular mit Test-Vorname + eigener E-Mail absenden → in GHL prüfen ob Kontakt mit Tag `aff:[NAME]` ankommt → Test-Kontakt danach löschen.
+   → **Weitere Pages mit identischem Integrations-Block (gleiche Session) brauchen KEINEN manuellen Test** — der automatische Check oben deckt sie ab. So bremst der Workflow bei 3–4 Pages am Stück nicht aus.
+   → Hintergrund: Der manuelle Test schützt gegen den katastrophalen **Silent-Fail** (Webhook-Fehler → Leads kommen still nicht an, ohne Fehlermeldung). Den fängt der automatische Check inzwischen mit ab — der manuelle Test ist die Extra-Absicherung dort, wo sich wirklich etwas geändert hat.
 
 > Kein ZIP, kein „browse files to upload" mehr. Falls die CLI mal nicht eingeloggt ist (`npx netlify-cli@latest status` prüfen) → einmal `login`, dann wieder direkt deployen.
 
@@ -575,7 +584,8 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] `_redirects` hat neue Zeile für das Thema?
 - [ ] `_redirects` hat `/[NAME]/* /:splat 302` ganz oben?
 - [ ] Direkt via `netlify-cli deploy --prod` deployed (kompletter Pages-Ordner, nicht nur die neue Datei)?
-- [ ] **NACH Deploy: echter Test-Lead abgesendet + in GHL mit `aff:[NAME]` angekommen?** (Pflicht — fängt den Silent-Webhook-Fail)
+- [ ] **NACH Deploy: Auto-Check gelaufen?** (curl → 200 · `.rr-form` da · Webhook-URL + `data-source="[NAME]"` + absoluter `/vip`-Redirect korrekt) — bei JEDER Page
+- [ ] **Manueller Test-Lead** (in GHL mit `aff:[NAME]` angekommen?) — nur bei **erster Page der Session / Template- oder Infra-Wechsel / geänderten Integrations-Werten**
 
 **Bei ❌ → Fehler beheben → nochmal prüfen → dann liefern.**
 
@@ -648,14 +658,14 @@ Jeder Lead wird automatisch:
 
 **Technisch:**
 1. `data-source` falsch/leer → Lead landet ohne `aff:[NAME]` (Attribution kaputt)
-2. Webhook-URL mit Tippfehler → Leads kommen **still** NICHT an (kein sichtbarer Fehler!) → **immer Test-Lead nach Deploy**
+2. Webhook-URL mit Tippfehler → Leads kommen **still** NICHT an (kein sichtbarer Fehler!) → **Auto-Check pro Page fängt das ab; manueller Test-Lead bei erster/geänderter Page**
 3. Consent-Checkbox oder Honeypot (`.rr-hp`) vergessen → DSGVO-Risiko + Spam
 4. `/[NAME]/*` fehlt in `_redirects` → 404
 5. `?source=`/`data-source` falscher Affiliate → Leads falsch zugeordnet
 6. Aus unvollständigem Ordner deployed → alle anderen Pages gelöscht (immer den ganzen Pages-Ordner via netlify-cli deployen)
 7. Redirect `/vip` relativ statt absolut → Lead landet nach Anmeldung im 404 (VIP-Seite liegt auf Hub-Site!)
 8. Dateiname mit Umlaut/Leerzeichen → URL kaputt → 404
-9. Kein Test-Lead gemacht → Webhook-Fehler bleibt unbemerkt, Reel läuft, Leads gehen verloren
+9. Auto-Check übersprungen UND kein Test-Lead bei geänderten Werten → Webhook-Fehler bleibt unbemerkt, Reel läuft, Leads gehen verloren
 
 **Design:**
 10. Plumpe Schatten `0 4px 24px rgba(...)` → billig wirken
