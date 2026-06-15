@@ -639,6 +639,7 @@ Das Design-System (Farben, Fonts, Hero, Eyebrows, Dark-Section, Custom-Form, Foo
 
 1. **NAV** — Fixed, glasmorphism, Links: „RealRise / [THEMA]", Rechts: „Top 3" · „Alle [X]" · „Bonus" · „Community"
 2. **HERO** (Grid ✅) — hero-stage + energy-field + scanline, Links: H1 + Subtitle, Rechts: hero-card (orange-glow) + **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`)
+   - ⚠️ **Hero-Card-Titel = „Werde Teil der RealRise Community"** (Button „Zugang sichern →"). Die Opt-in-Karte beschreibt IMMER den **Early Access zur RealRise Community** — NICHT das Reel-Thema als Köder („Hol dir die XY"). Das Thema lebt in H1/Subtitle links, die Karte rechts beschreibt, wofür man sich einträgt.
 3. **HOW TO USE** (Grid ❌) — 3 Steps, warm-brown shadow
 4. **TOP 3** (Grid ✅) — 3× prompt-card, warm-brown shadow
 5. **ALLE X DARK** (Grid ❌) — Canvas-Animation, X× dark-prompt-card + Instagram-CTA-Card
