@@ -145,7 +145,7 @@ Beispiel: „Prompts für Anfänger" → `prompts-fuer-anfaenger.html` (ä→ae,
    Claude prüft die Live-Page direkt nach dem Deploy automatisch:
    - `curl` auf den Live-Link → Status **200**?
    - Formular (`.rr-form`) im HTML vorhanden?
-   - **Webhook-URL** korrekt + **`data-source="[NAME]"`** gesetzt + **Redirect absolut** (`https://ki.realrise-agency.com/vip`, nicht relativ)?
+   - **Webhook-URL** korrekt + **`data-source="[NAME]"`** gesetzt + **Redirect absolut** (`https://ki.realrise-agency.com/guides`, nicht relativ)?
    → Fängt die „Regeneration-Drift" (vertippte Webhook-ID, relativer Redirect, vergessene `_redirects`-Zeile) **lückenlos** ab — besser als ein Stichproben-Test, weil's bei *jeder* Page läuft.
 5. **MANUELLER TEST-LEAD — nur in diesen Fällen nötig:**
    **(1)** bei der **ersten Page einer Session**, **(2)** nach einem **Template-/Infra-Wechsel**, **(3)** wenn sich **Webhook-URL, Redirect oder `data-source`** geändert haben.
@@ -207,8 +207,9 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 - `data-placement` setzen: im Hero `="hero"`, in der Early-Access-Sektion `="early"` (sonst sind beide Formulare im Tracking nicht unterscheidbar)
 - **Consent-Checkbox + Honeypot (`.rr-hp`) IMMER drin**
 - Webhook-URL exakt übernehmen · Formular im **Hero UND Early-Access**
-- **Redirect-Ziel = absolute URL `https://ki.realrise-agency.com/vip`** (NICHT `/vip` relativ!) — die VIP-Seite liegt auf der Hub-Site, nicht auf deiner Netlify-Site. Mit `/vip` relativ landen deine Leads im 404.
-  → **Pflicht:** die E-Mail mit `?email='+encodeURIComponent(m)` anhängen (`…/vip?email=…`). Nur so kann die Survey (`/guides`) die Antworten + Telefonnummer dem richtigen GHL-Kontakt zuordnen. Ohne den Param speichert die Survey nichts.
+- **Redirect-Ziel = absolute URL `https://ki.realrise-agency.com/guides`** (NICHT `/guides` relativ!) — die Survey-Seite liegt auf der Hub-Site, nicht auf deiner Netlify-Site. Mit `/guides` relativ landen deine Leads im 404.
+  → **Pflicht:** die E-Mail mit `?email='+encodeURIComponent(m)` anhängen (`…/guides?email=…`). Nur so kann die Survey (`/guides`) die Antworten + Telefonnummer dem richtigen GHL-Kontakt zuordnen. Ohne den Param speichert die Survey nichts.
+  → **Funnel-Flow (Pre-Launch):** Opt-in (Name+E-Mail) → **`/guides` = kurze Survey (Pflicht-Gate, ~6 Fragen + Telefon)** → **`/vip` = Zugang freigeschaltet** (WhatsApp-Gruppe + Library). Die Survey ist der Schlüssel zum Inner Circle, kein optionaler Nebenschritt. Telefon wird als „WhatsApp-Zugang" geframt (Pull, kein Druck).
 - Das alte `<iframe>` + `form_embed.js` entfallen komplett (durch dieses Formular ersetzt).
 
 **1. CSS** (einmal in den `<style>`):
@@ -266,7 +267,7 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
     if(!RE.test(m)){err.textContent='Bitte gib eine gültige E-Mail ein.';err.classList.add('show');return;}
     if(!f.consent.checked){err.textContent='Bitte stimme dem Datenschutz zu.';err.classList.add('show');return;}
     b.disabled=true;b.textContent='Wird gesendet …';
-    function done(){['.rr-field','.rr-consent','.rr-submit','.rr-trust'].forEach(s=>f.querySelectorAll(s).forEach(el=>el.style.display='none'));ok.classList.add('show');setTimeout(()=>location.href='https://ki.realrise-agency.com/vip?email='+encodeURIComponent(m),1300);}
+    function done(){['.rr-field','.rr-consent','.rr-submit','.rr-trust'].forEach(s=>f.querySelectorAll(s).forEach(el=>el.style.display='none'));ok.classList.add('show');setTimeout(()=>location.href='https://ki.realrise-agency.com/guides?email='+encodeURIComponent(m),1300);}
     try{const r=await fetch(RR_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({first_name:n,email:m,source:f.dataset.source||'',placement:f.dataset.placement||'',consent:true})});if(!r.ok)throw 0;done();}
     catch(_){b.disabled=false;b.textContent='Zugang sichern →';err.textContent='Etwas ist schiefgelaufen. Bitte nochmal.';err.classList.add('show');}
   });});
@@ -568,7 +569,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] `data-placement` gesetzt (Hero = `hero`, Early Access = `early`)?
 - [ ] Consent-Checkbox + Honeypot (`.rr-hp`) vorhanden?
 - [ ] Webhook-URL exakt übernommen (Opt-in-Webhook)?
-- [ ] Redirect-Ziel = absolute URL `https://ki.realrise-agency.com/vip` (NICHT `/vip` relativ)?
+- [ ] Redirect-Ziel = absolute URL `https://ki.realrise-agency.com/guides` (NICHT `/guides` relativ)?
 - [ ] `.rr-form`-JS-Handler einmal vor `</body>`?
 - [ ] KEIN altes `<iframe>` / `form_embed.js` mehr drin?
 
@@ -599,7 +600,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] `_redirects` hat neue Zeile für das Thema?
 - [ ] `_redirects` hat `/[NAME]/* /:splat 302` ganz oben?
 - [ ] Direkt via `netlify-cli deploy --prod` deployed (kompletter Pages-Ordner, nicht nur die neue Datei)?
-- [ ] **NACH Deploy: Auto-Check gelaufen?** (curl → 200 · `.rr-form` da · Webhook-URL + `data-source="[NAME]"` + absoluter `/vip`-Redirect korrekt) — bei JEDER Page
+- [ ] **NACH Deploy: Auto-Check gelaufen?** (curl → 200 · `.rr-form` da · Webhook-URL + `data-source="[NAME]"` + absoluter `/guides`-Redirect korrekt) — bei JEDER Page
 - [ ] **Manueller Test-Lead** (in GHL mit `aff:[NAME]` angekommen?) — nur bei **erster Page der Session / Template- oder Infra-Wechsel / geänderten Integrations-Werten**
 - [ ] **In die Library aufgenommen?** Guide-Karte in Hub-`index.html` ergänzt + Hub neu deployed + Karte live (`curl` geprüft) — bzw. an RealRise gemeldet, falls kein Hub-Zugriff
 
@@ -680,7 +681,7 @@ Jeder Lead wird automatisch:
 4. `/[NAME]/*` fehlt in `_redirects` → 404
 5. `?source=`/`data-source` falscher Affiliate → Leads falsch zugeordnet
 6. Aus unvollständigem Ordner deployed → alle anderen Pages gelöscht (immer den ganzen Pages-Ordner via netlify-cli deployen)
-7. Redirect `/vip` relativ statt absolut → Lead landet nach Anmeldung im 404 (VIP-Seite liegt auf Hub-Site!)
+7. Redirect `/guides` relativ statt absolut → Lead landet nach Anmeldung im 404 (Survey-Seite liegt auf Hub-Site!)
 8. Dateiname mit Umlaut/Leerzeichen → URL kaputt → 404
 9. Auto-Check übersprungen UND kein Test-Lead bei geänderten Werten → Webhook-Fehler bleibt unbemerkt, Reel läuft, Leads gehen verloren
 
