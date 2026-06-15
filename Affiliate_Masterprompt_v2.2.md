@@ -208,6 +208,7 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 - **Consent-Checkbox + Honeypot (`.rr-hp`) IMMER drin**
 - Webhook-URL exakt übernehmen · Formular im **Hero UND Early-Access**
 - **Redirect-Ziel = absolute URL `https://ki.realrise-agency.com/vip`** (NICHT `/vip` relativ!) — die VIP-Seite liegt auf der Hub-Site, nicht auf deiner Netlify-Site. Mit `/vip` relativ landen deine Leads im 404.
+  → **Pflicht:** die E-Mail mit `?email='+encodeURIComponent(m)` anhängen (`…/vip?email=…`). Nur so kann die Survey (`/guides`) die Antworten + Telefonnummer dem richtigen GHL-Kontakt zuordnen. Ohne den Param speichert die Survey nichts.
 - Das alte `<iframe>` + `form_embed.js` entfallen komplett (durch dieses Formular ersetzt).
 
 **1. CSS** (einmal in den `<style>`):
@@ -265,7 +266,7 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
     if(!RE.test(m)){err.textContent='Bitte gib eine gültige E-Mail ein.';err.classList.add('show');return;}
     if(!f.consent.checked){err.textContent='Bitte stimme dem Datenschutz zu.';err.classList.add('show');return;}
     b.disabled=true;b.textContent='Wird gesendet …';
-    function done(){['.rr-field','.rr-consent','.rr-submit','.rr-trust'].forEach(s=>f.querySelectorAll(s).forEach(el=>el.style.display='none'));ok.classList.add('show');setTimeout(()=>location.href='https://ki.realrise-agency.com/vip',1300);}
+    function done(){['.rr-field','.rr-consent','.rr-submit','.rr-trust'].forEach(s=>f.querySelectorAll(s).forEach(el=>el.style.display='none'));ok.classList.add('show');setTimeout(()=>location.href='https://ki.realrise-agency.com/vip?email='+encodeURIComponent(m),1300);}
     try{const r=await fetch(RR_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({first_name:n,email:m,source:f.dataset.source||'',placement:f.dataset.placement||'',consent:true})});if(!r.ok)throw 0;done();}
     catch(_){b.disabled=false;b.textContent='Zugang sichern →';err.textContent='Etwas ist schiefgelaufen. Bitte nochmal.';err.classList.add('show');}
   });});
