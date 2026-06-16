@@ -545,6 +545,30 @@ HTML: `<div class="num-badge">01</div>` — nur die Zahl, nichts dahinter.
 ### Code-Box (ÜBERALL identisch)
 Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE halbtransparentes Schwarz (`rgba(0,0,0,0.38)`) auf hellem Grund → wird zu hässlichem Grau.
 
+**Diese CSS exakt übernehmen** (nicht frei neu generieren):
+
+```css
+.code-box {
+  position: relative;                 /* PFLICHT: Anker für den Button */
+  background: var(--code-bg); color: var(--code-fg);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 16px;
+  padding: 20px 22px;
+  padding-top: 48px;                  /* PFLICHT: Platz für den Button — sonst überlappt er den Code */
+  font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.78;
+  white-space: pre-wrap; word-break: break-word;
+}
+.copy-btn {
+  position: absolute; top: 12px; right: 12px;
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.10em;
+  text-transform: uppercase; font-weight: 500; cursor: pointer;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 6px 14px;
+  transition: all 0.15s;
+}
+```
+
+⚠️ **Häufiger Bug:** Der `.copy-btn` ist `position:absolute` (oben rechts). Ohne `position:relative` **und** `padding-top:48px` auf `.code-box` legt sich der „Kopieren"-Button auf die erste Code-Zeile. Diese zwei Zeilen sind nicht optional.
+
 ---
 
 ### 🔧 Farb-Korrektur (Alt-Seite auf Claude-Orange umfärben)
@@ -589,6 +613,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] Early Access: Benefits-Liste (orange ✓) + Trust-Reihe (nicht nur 1 Satz)?
 - [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = orange-pale/orange · dunkel = orange-tint/#e0a890)
 - [ ] Code-Boxen ÜBERALL solid `#1a1714` (kein halbtransparentes Grau auf hellen Cards)?
+- [ ] `.code-box` hat `position:relative` + `padding-top:48px`? (sonst überlappt der Kopieren-Button die erste Code-Zeile)
 - [ ] Eyebrows einheitlich: Mono + orange Gradient-Linie (orange→orange, hell wie dunkel) — NIE warm/gold?
 - [ ] KONSEQUENT CLAUDE-ORANGE: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
 - [ ] Scroll Reveal vorhanden?
