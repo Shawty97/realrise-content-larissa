@@ -50,10 +50,22 @@ Claude macht automatisch:
 
 1. **Hook + Caption ummodeln** auf [INSTAGRAM]
    CTA in DM/Caption immer: *„Schreib mir „KI" per DM — ich schick dir alles was du brauchst"*
-2. **Funnel-Page (HTML) erstellen** — der gesamte Reel-Content komplett ausformuliert mit Kopier-Buttons
+2. **Funnel-Page bauen = `_REFERENZ-TEMPLATE.html` KOPIEREN** und nur den Inhalt austauschen (gesamter Reel-Content ausformuliert, mit Kopier-Buttons). **NIE** Struktur/CSS neu generieren — siehe 🔒-Regel unten.
 3. Page im **Staging-Ordner** speichern → in **Live-Ordner** kopieren → Deploy-Workflow
 
 **Kein PDF.** Die Page ist der einzige Output.
+
+---
+
+## 🔒 REFERENZ-TEMPLATE — KOPIEREN STATT GENERIEREN (wichtigste Regel)
+
+Im Repo liegt **`_REFERENZ-TEMPLATE.html`** — die **einzige Wahrheit** fürs Design. So baust du **jede** Page:
+
+1. **Kopiere `_REFERENZ-TEMPLATE.html`** als Basis — nicht von null bauen, nicht „nachbauen".
+2. Ändere **NUR den Inhalt** (Texte, Prompts, Headline, `data-source`, `@handle`) — Anleitung steht im Header der Datei.
+3. **Struktur, CSS, Sektionen, Scripts, Animationen, Design-Tokens NIEMALS anfassen.**
+
+Warum: „Frei generieren" weicht jedes Mal minimal ab → über viele Pages driftet das Design sichtbar auseinander (genau das Problem mit uneinheitlichen Affiliate-Seiten). Kopieren = jede Page pixelgleich. **Im Zweifel gilt: ist es Struktur/CSS → nicht anfassen.**
 
 ---
 
