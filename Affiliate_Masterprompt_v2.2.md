@@ -164,20 +164,12 @@ Beispiel: „Prompts für Anfänger" → `prompts-fuer-anfaenger.html` (ä→ae,
    → Formular mit Test-Vorname + eigener E-Mail absenden → in GHL prüfen ob Kontakt mit Tag `aff:[NAME]` ankommt → Test-Kontakt danach löschen.
    → **Weitere Pages mit identischem Integrations-Block (gleiche Session) brauchen KEINEN manuellen Test** — der automatische Check oben deckt sie ab. So bremst der Workflow bei 3–4 Pages am Stück nicht aus.
    → Hintergrund: Der manuelle Test schützt gegen den katastrophalen **Silent-Fail** (Webhook-Fehler → Leads kommen still nicht an, ohne Fehlermeldung). Den fängt der automatische Check inzwischen mit ab — der manuelle Test ist die Extra-Absicherung dort, wo sich wirklich etwas geändert hat.
-6. **IN DIE LIBRARY AUFNEHMEN — jede neue Page kommt in die zentrale RealRise Library** (`ki.realrise-agency.com`):
-   - In der Hub-`index.html` (Ordner `03_Output_Pages`) in der **passenden Kategorie** eine Guide-Karte ergänzen (Aufbau 1:1 wie die bestehenden Karten):
-     ```html
-     <a class="guide-card" href="/[NAME]/[thema]">
-       <div class="card-num">[KAT.NR]</div>
-       <div class="card-title">[Kurzer Titel]</div>
-       <p class="card-desc">[1–2 Sätze, was die Page bringt — wahr, kein Hype]</p>
-       <div class="card-footer"><span class="card-creator">@[INSTAGRAM]</span><span class="card-arrow">→</span></div>
-     </a>
-     ```
-   - Danach die **Hub-Site neu deployen**: `cd ~/PFAD/ZU/03_Output_Pages && npx netlify-cli@latest deploy --prod --dir="."` → die Karte ist sofort live.
-   - Kurz prüfen: `curl -s ki.realrise-agency.com | grep "/[NAME]/[thema]"` → Karte da?
-   - ⚠️ Braucht **Hub-Zugriff** (RealRise/Daniel-Account). Affiliate ohne Hub-Zugriff: Page-Link + Titel + Kurzbeschreibung an RealRise schicken → wird dort in die Library aufgenommen.
-   → So wächst die Library mit **jeder** Page automatisch — genau das ist der „wir verkaufen keine Prompts, wir liefern sie täglich gratis"-Beweis.
+6. **IN DIE LIBRARY AUFNEHMEN — über das RealRise-Formular** (kein Code, kein Hub-Zugriff nötig):
+   Reiche deine fertige Page hier ein:
+   **https://docs.google.com/forms/d/e/1FAIpQLScRIrGqORVGIsO4WvSwVCZam8Ja9NQVKlujtT54ccwP1hB5IA/viewform**
+   Trag ein: **Kategorie** (Setup/Skills/Prompts/Modelle/Workflow) · **Titel** (kurz) · **Beschreibung** (1 Satz, wahr, kein Hype) · **Page-Link im Hub-Format `/[NAME]/[thema]`** · **dein Handle** `@[INSTAGRAM]`.
+   RealRise prüft & gibt frei → die Karte erscheint **automatisch** in der Library (`ki.realrise-agency.com`). Kein `index.html`-Bearbeiten, kein Deploy.
+   → So wächst die Library mit **jeder** Page — der „wir verkaufen keine Prompts, wir liefern sie täglich gratis"-Beweis.
 
 > Kein ZIP, kein „browse files to upload" mehr. Falls die CLI mal nicht eingeloggt ist (`npx netlify-cli@latest status` prüfen) → einmal `login`, dann wieder direkt deployen.
 
@@ -639,7 +631,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 - [ ] Direkt via `netlify-cli deploy --prod` deployed (kompletter Pages-Ordner, nicht nur die neue Datei)?
 - [ ] **NACH Deploy: Auto-Check gelaufen?** (curl → 200 · `.rr-form` da · Webhook-URL + `data-source="[NAME]"` + absoluter `/guides`-Redirect korrekt) — bei JEDER Page
 - [ ] **Manueller Test-Lead** (in GHL mit `aff:[NAME]` angekommen?) — nur bei **erster Page der Session / Template- oder Infra-Wechsel / geänderten Integrations-Werten**
-- [ ] **In die Library aufgenommen?** Guide-Karte in Hub-`index.html` ergänzt + Hub neu deployed + Karte live (`curl` geprüft) — bzw. an RealRise gemeldet, falls kein Hub-Zugriff
+- [ ] **In die Library eingereicht?** Page übers RealRise-Library-Formular eingereicht (Kategorie · Titel · Beschreibung · Page-Link `/[NAME]/[thema]` · Handle)?
 
 **Bei ❌ → Fehler beheben → nochmal prüfen → dann liefern.**
 
