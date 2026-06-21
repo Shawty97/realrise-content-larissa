@@ -164,8 +164,8 @@ Beispiel: „Prompts für Anfänger" → `prompts-fuer-anfaenger.html` (ä→ae,
    → Formular mit Test-Vorname + eigener E-Mail absenden → in GHL prüfen ob Kontakt mit Tag `aff:[NAME]` ankommt → Test-Kontakt danach löschen.
    → **Weitere Pages mit identischem Integrations-Block (gleiche Session) brauchen KEINEN manuellen Test** — der automatische Check oben deckt sie ab. So bremst der Workflow bei 3–4 Pages am Stück nicht aus.
    → Hintergrund: Der manuelle Test schützt gegen den katastrophalen **Silent-Fail** (Webhook-Fehler → Leads kommen still nicht an, ohne Fehlermeldung). Den fängt der automatische Check inzwischen mit ab — der manuelle Test ist die Extra-Absicherung dort, wo sich wirklich etwas geändert hat.
-6. **IN DIE LIBRARY AUFNEHMEN — über das RealRise-Formular** (kein Code, kein Hub-Zugriff nötig):
-   Reiche deine fertige Page hier ein:
+6. **IN DIE LIBRARY AUFNEHMEN — PFLICHT-SCHRITT direkt nach jedem Deploy** (übers RealRise-Formular, kein Code, kein Hub-Zugriff):
+   **Sobald deine Page live ist, öffnest du SOFORT dieses Formular und füllst es aus** — sonst erscheint deine Page nicht in der Library:
    **https://docs.google.com/forms/d/e/1FAIpQLScRIrGqORVGIsO4WvSwVCZam8Ja9NQVKlujtT54ccwP1hB5IA/viewform**
    Trag ein: **Kategorie** (Setup/Skills/Prompts/Modelle/Workflow) · **Titel** (kurz) · **Beschreibung** (1 Satz, wahr, kein Hype) · **Page-Link im Hub-Format `/[NAME]/[thema]`** · **dein Handle** `@[INSTAGRAM]`.
    RealRise prüft & gibt frei → die Karte erscheint **automatisch** in der Library (`ki.realrise-agency.com`). Kein `index.html`-Bearbeiten, kein Deploy.
