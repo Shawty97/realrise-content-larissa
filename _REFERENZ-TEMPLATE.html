@@ -356,7 +356,7 @@
             </div>
             <div class="hero-card-title">Werde Teil der RealRise Community</div>
             <!-- Custom Lead-Form → GHL Inbound Webhook -->
-            <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="hero" novalidate>
+            <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="hero" data-phone="required" novalidate>
               <div class="rr-field">
                 <label>Vorname</label>
                 <input type="text" name="first_name" placeholder="Dein Vorname" autocomplete="given-name" required>
@@ -364,7 +364,7 @@
               <div class="rr-field">
                 <label>E-Mail</label>
                 <input type="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
-              </div>
+              </div><div class="rr-field rr-phone" style="display:none"><label>Handynummer</label><input type="tel" name="phone" placeholder="+49 151 23456789" autocomplete="tel" inputmode="tel"></div>
               <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
               <label class="rr-consent">
                 <input type="checkbox" name="consent" required>
@@ -725,7 +725,7 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
       <div class="early-right">
         <div class="early-right-card">
           <!-- Custom Lead-Form → GHL Inbound Webhook -->
-          <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="early-access" novalidate style="padding: 24px;">
+          <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="early-access" data-phone="required" novalidate style="padding: 24px;">
             <div class="rr-field">
               <label>Vorname</label>
               <input type="text" name="first_name" placeholder="Dein Vorname" autocomplete="given-name" required>
@@ -733,7 +733,7 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
             <div class="rr-field">
               <label>E-Mail</label>
               <input type="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
-            </div>
+            </div><div class="rr-field rr-phone" style="display:none"><label>Handynummer</label><input type="tel" name="phone" placeholder="+49 151 23456789" autocomplete="tel" inputmode="tel"></div>
             <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label class="rr-consent">
               <input type="checkbox" name="consent" required>
@@ -826,6 +826,7 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
     const RR_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/kzqtcVUjWkDlITNXDAUU/webhook-trigger/WbIflDi1OLz9gGFHjbWN'; /* GHL Inbound Webhook: RealRise Community Opt-in */
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     document.querySelectorAll('form.rr-form').forEach(function(form){
+    var phoneMode=(form.dataset.phone||'off').toLowerCase();var phoneWrap=form.querySelector('.rr-phone');if(phoneWrap&&phoneMode!=='off')phoneWrap.style.display='';
       form.addEventListener('submit', async function(e){
         e.preventDefault();
         const err = form.querySelector('.rr-error');
@@ -834,11 +835,13 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
         const firstName = (form.first_name.value || '').trim();
         const email = (form.email.value || '').trim();
         const consent = form.consent.checked;
+      const phoneEl = form.querySelector('input[name="phone"]'); const phone = phoneEl ? (phoneEl.value || '').trim() : '';
         err.classList.remove('show');
         if (form.website.value) return; /* Honeypot → Bot, still verwerfen */
         if (firstName.length < 2) { err.textContent = 'Bitte gib deinen Vornamen ein.'; err.classList.add('show'); form.first_name.focus(); return; }
         if (!EMAIL_RE.test(email)) { err.textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.'; err.classList.add('show'); form.email.focus(); return; }
         if (!consent) { err.textContent = 'Bitte stimme dem Datenschutz zu.'; err.classList.add('show'); return; }
+      if (phoneMode === 'required') { var pd = phone.replace(/\D/g,''); if (pd.length < 6) { err.textContent = 'Bitte gib eine gültige Handynummer ein.'; err.classList.add('show'); if (phoneEl) phoneEl.focus(); return; } }
         const origLabel = btn.textContent;
         btn.disabled = true; btn.textContent = 'Wird gesendet …';
         function showSuccess(){
@@ -854,7 +857,7 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              first_name: firstName, email: email,
+              first_name: firstName, email: email, phone: phone,
               source: form.dataset.source || '', placement: form.dataset.placement || '', consent: true
             })
           });
