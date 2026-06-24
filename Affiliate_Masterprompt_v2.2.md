@@ -292,16 +292,16 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1343968131131688');
+fbq('init', '1367349055288604');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1343968131131688&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1367349055288604&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 ```
 
-**Pixel-ID: `1343968131131688`** — niemals ändern. Geht in jeden `<head>`.
+**Pixel-ID: `1367349055288604`** — niemals ändern. Geht in jeden `<head>`.
 
 ### C. Footer mit Impressum + Datenschutz (Pflicht auf JEDER Seite!)
 
@@ -590,7 +590,7 @@ Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), d
 
 **Meta Pixel:**
 - [ ] Pixel-Code im `<head>` vorhanden?
-- [ ] ID `1343968131131688` korrekt?
+- [ ] ID `1367349055288604` korrekt?
 
 **Lead-Formular (`.rr-form` — beide: Hero + Early Access):**
 - [ ] `data-source="[NAME]"` korrekt (NICHT der eines anderen Affiliates!)?
@@ -733,7 +733,7 @@ Jeder Lead wird automatisch:
 - Jeder Prompt hat **Kopieren-Button**
 - **Lead-Formular** (`.rr-form`) in **Hero + Early Access** mit `data-source="[NAME]"`
 - Instagram-CTA **[INSTAGRAM]** als letzter Slot in Dark Section
-- Meta Pixel **`1343968131131688`** im `<head>`
+- Meta Pixel **`1367349055288604`** im `<head>`
 - **Tonalität:** Premium, zugänglich, Du-Form
 
 ---
