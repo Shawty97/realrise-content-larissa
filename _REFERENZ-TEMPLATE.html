@@ -862,6 +862,7 @@ Kleiner Auftrag → kürzere Antwort → weniger Token</div>
             })
           });
           if (!res.ok) throw new Error('bad status');
+        if(window.fbq)fbq('track','Lead');
           showSuccess();
         } catch (e2) {
           btn.disabled = false; btn.textContent = origLabel;
