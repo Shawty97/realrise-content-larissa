@@ -559,7 +559,11 @@ Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE 
   padding: 20px 22px;
   padding-top: 48px;                  /* PFLICHT: Platz für den Button — sonst überlappt er den Code */
   font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.78;
-  white-space: pre-wrap; word-break: break-word;
+  white-space: pre-line; word-break: break-word;  /* PFLICHT: pre-line (NIE pre-wrap) — sonst bleibt manuelle Einrückung erhalten = hängender Indent am Handy */
+}
+/* PFLICHT Mobile (@media max-width:900px): Code-Boxen kleiner für sauberen Umbruch */
+@media (max-width: 900px) {
+  .code-box, .dark-code-box { font-size: 11px; line-height: 1.62; padding-left: 16px; padding-right: 16px; }
 }
 .copy-btn {
   position: absolute; top: 12px; right: 12px;
