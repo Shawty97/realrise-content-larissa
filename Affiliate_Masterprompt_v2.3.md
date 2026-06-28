@@ -1,6 +1,17 @@
-# REALRISE AFFILIATE MASTERPROMPT v2.2
+# REALRISE AFFILIATE MASTERPROMPT v2.3
 # ──────────────────────────────────────────────────────────
-# 🆕 NEU IN v2.2 (bitte ab jetzt diese Version nutzen):
+# 🆕 NEU IN v2.3 (bitte ab jetzt diese Version nutzen):
+#   • 🍪 COOKIE-CONSENT (DSGVO): Banner blockt den Meta-Pixel bis Einwilligung zu „Marketing".
+#     „Cookie-Einstellungen"-Link im Footer zum Widerruf. noscript-Pixel entfällt.
+#     → PFLICHT-Block C ist jetzt „Cookie-Consent + Meta Pixel" (Pixel feuert NUR nach Zustimmung)
+#   • 📱 HANDYNUMMER als Pflichtfeld im Opt-in (data-phone="required"), an GHL gemappt
+#   • 📊 LEAD-EVENT (fbq 'track','Lead') beim Opt-in-Erfolg
+#   • 🎯 Aktueller Pixel: 1367349055288604 (RealRiseLeads)
+#   • 📐 CODE-BOXEN mobil sauber: white-space: pre-line (NIE pre-wrap) + kleinere Mono-Schrift
+#     im @media (max-width:900px) — kein hängender Indent mehr am Handy
+#   • 🎨 HINTERGRUND cleaner: kein rötlicher Clay-Wash mehr (Clay #CC785C nur als Akzent, nie flächig)
+# ──────────────────────────────────────────────────────────
+# 🔁 Vorher in v2.2:
 #   • Opt-in-Formular: eigenes Custom-Formular statt GHL-iframe
 #     (Claude-oranger Marken-Button, Consent + Honeypot, kein example.com) — Block A
 #   • Farb-Identität: KONSEQUENT CLAUDE-ORANGE #CC785C (Akzent überall, kein Blau/Gold/Lila)
@@ -336,7 +347,7 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
 
 ---
 
-## 🎨 DESIGN SYSTEM v2.2 — VIBECADEMY LEVEL
+## 🎨 DESIGN SYSTEM v2.3 — VIBECADEMY LEVEL
 
 > **Design-Referenz:** Die zuletzt erstellte Page im Live-Ordner ist die 1:1 Vorlage.
 > Layout, CSS, Animationen bleiben identisch — nur Inhalte + `?source=[NAME]` tauschen.
