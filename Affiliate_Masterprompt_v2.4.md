@@ -1,9 +1,13 @@
-# REALRISE AFFILIATE MASTERPROMPT v2.3
+# REALRISE AFFILIATE MASTERPROMPT v2.4
 # ──────────────────────────────────────────────────────────
-# 🆕 NEU IN v2.3 (bitte ab jetzt diese Version nutzen):
+# 🆕 NEU IN v2.4 (bitte ab jetzt diese Version nutzen):
 #   • 🎨 FLAGSHIP-REDESIGN: kompletter Umstieg auf den Apple-White-Look der Hauptseite
 #     (System-SF-Fonts, #F5F5F7, Coral #d97757, 980px-Pill-Buttons). Cream/Cormorant abgelöst.
 #     → Design-System-Sektion unten + _REFERENZ-TEMPLATE.html sind die 1:1-Vorlage.
+#   • 🎯 KLARSTELLUNG data-source: IMMER dein Affiliate-Kürzel (z.B. regina), NIE Seitenname/Thema/Reel-Name
+#     → verhindert kaputte Tracking-Tags wie aff:datei statt aff:regina (siehe Pflicht-Block A)
+# ──────────────────────────────────────────────────────────
+# 🔁 In v2.3:
 #   • 🍪 COOKIE-CONSENT (DSGVO): Banner blockt den Meta-Pixel bis Einwilligung zu „Marketing".
 #     „Cookie-Einstellungen"-Link im Footer zum Widerruf. noscript-Pixel entfällt.
 #     → PFLICHT-Block C ist jetzt „Cookie-Consent + Meta Pixel" (Pixel feuert NUR nach Zustimmung)
@@ -11,10 +15,6 @@
 #   • 📊 LEAD-EVENT (fbq 'track','Lead') beim Opt-in-Erfolg
 #   • 🎯 Aktueller Pixel: 1367349055288604 (RealRiseLeads)
 #   • 📐 CODE-BOXEN mobil sauber: white-space: pre-line (NIE pre-wrap) + kleinere Mono-Schrift
-#     im @media (max-width:900px) — kein hängender Indent mehr am Handy
-#   • 🎨 HINTERGRUND cleaner: kein rötlicher Clay-Wash mehr (Clay #CC785C nur als Akzent, nie flächig)
-#   • 🎯 KLARSTELLUNG data-source: IMMER dein Affiliate-Kürzel (z.B. regina), NIE Seitenname/Thema/Reel-Name
-#     → verhindert kaputte Tracking-Tags wie aff:datei statt aff:regina (siehe Pflicht-Block A)
 # ──────────────────────────────────────────────────────────
 # 🔁 Vorher in v2.2:
 #   • Opt-in-Formular: eigenes Custom-Formular statt GHL-iframe

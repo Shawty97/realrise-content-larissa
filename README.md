@@ -1,11 +1,11 @@
 # RealRise Affiliate Master-Prompt
 
 Hier liegt immer die **aktuellste Version** des RealRise Master-Prompts.
-Datei: [`Affiliate_Masterprompt_v2.3.md`](./Affiliate_Masterprompt_v2.3.md)
+Datei: [`Affiliate_Masterprompt_v2.4.md`](./Affiliate_Masterprompt_v2.4.md)
 
 ## So nutzt du ihn
 
-1. Öffne `Affiliate_Masterprompt_v2.3.md` und kopiere den **kompletten Inhalt**.
+1. Öffne `Affiliate_Masterprompt_v2.4.md` und kopiere den **kompletten Inhalt**.
    (Oben rechts in der Datei-Ansicht auf **„Raw"** oder den Kopier-Button.)
 2. Ersetze die **3 Platzhalter** oben im Prompt:
    - `[NAME]` → dein Affiliate-Name in Kleinbuchstaben (z.B. `anna`)
