@@ -10,6 +10,8 @@
 #   • 📐 CODE-BOXEN mobil sauber: white-space: pre-line (NIE pre-wrap) + kleinere Mono-Schrift
 #     im @media (max-width:900px) — kein hängender Indent mehr am Handy
 #   • 🎨 HINTERGRUND cleaner: kein rötlicher Clay-Wash mehr (Clay #CC785C nur als Akzent, nie flächig)
+#   • 🎯 KLARSTELLUNG data-source: IMMER dein Affiliate-Kürzel (z.B. regina), NIE Seitenname/Thema/Reel-Name
+#     → verhindert kaputte Tracking-Tags wie aff:datei statt aff:regina (siehe Pflicht-Block A)
 # ──────────────────────────────────────────────────────────
 # 🔁 Vorher in v2.2:
 #   • Opt-in-Formular: eigenes Custom-Formular statt GHL-iframe
@@ -27,7 +29,8 @@
 # ──────────────────────────────────────────────────────────
 # VOR DEM ERSTEN EINSATZ: Diese 3 Platzhalter ersetzen:
 #
-#   [NAME]       → dein Affiliate-Name in Kleinbuchstaben (= dein GHL-Tracking-Tag)
+#   [NAME]       → dein FESTES Affiliate-Kürzel in Kleinbuchstaben (= dein GHL-Tracking-Tag,
+#                  identisch mit [DEIN-KÜRZEL] im Template — NIE der Seitenname/das Thema)
 #                  Beispiel: regina  /  anna  /  lisa
 #                  ⚠️ NUR Kleinbuchstaben, keine Umlaute/Leerzeichen — steuert dein Tracking!
 #
@@ -219,6 +222,7 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 
 **Pflicht:**
 - `data-source="[NAME]"` → steuert automatisch `aff:[NAME]` (dein Tracking-Tag)
+  → ⚠️ **`data-source` ist IMMER dein festes Affiliate-Kürzel (z.B. `regina`) — NIEMALS der Seitenname, das Thema oder der Reel-Name.** Egal ob die Page `/datei`, `/routines` oder `/fable` heißt: `data-source` bleibt dein Kürzel. Sonst entstehen kaputte Tags wie `aff:datei` statt `aff:regina`.
 - `data-placement` setzen: im Hero `="hero"`, in der Early-Access-Sektion `="early"` (sonst sind beide Formulare im Tracking nicht unterscheidbar)
 - **Consent-Checkbox + Honeypot (`.rr-hp`) IMMER drin**
 - Webhook-URL exakt übernehmen · Formular im **Hero UND Early-Access**
@@ -251,7 +255,7 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 .rr-success p{font-size:14px;color:var(--muted)}
 ```
 
-**2. HTML** (im Hero UND in Early-Access — `data-source` = dein `[NAME]`):
+**2. HTML** (im Hero UND in Early-Access — `data-source` = dein Affiliate-Kürzel `[NAME]`, **NIE** der Seitenname/das Thema):
 ```html
 <form class="rr-form" data-source="[NAME]" data-placement="hero" novalidate>
   <div class="rr-field"><label>Vorname</label>
