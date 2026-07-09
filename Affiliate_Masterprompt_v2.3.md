@@ -1,6 +1,9 @@
 # REALRISE AFFILIATE MASTERPROMPT v2.3
 # ──────────────────────────────────────────────────────────
 # 🆕 NEU IN v2.3 (bitte ab jetzt diese Version nutzen):
+#   • 🎨 FLAGSHIP-REDESIGN: kompletter Umstieg auf den Apple-White-Look der Hauptseite
+#     (System-SF-Fonts, #F5F5F7, Coral #d97757, 980px-Pill-Buttons). Cream/Cormorant abgelöst.
+#     → Design-System-Sektion unten + _REFERENZ-TEMPLATE.html sind die 1:1-Vorlage.
 #   • 🍪 COOKIE-CONSENT (DSGVO): Banner blockt den Meta-Pixel bis Einwilligung zu „Marketing".
 #     „Cookie-Einstellungen"-Link im Footer zum Widerruf. noscript-Pixel entfällt.
 #     → PFLICHT-Block C ist jetzt „Cookie-Consent + Meta Pixel" (Pixel feuert NUR nach Zustimmung)
@@ -235,24 +238,25 @@ Eigenes Formular (KEIN iframe) → postet Name + E-Mail direkt an den GHL Opt-in
 ```css
 .rr-form{display:flex;flex-direction:column;gap:14px;text-align:left}
 .rr-field{display:flex;flex-direction:column;gap:6px}
-.rr-field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.rr-field input{width:100%;padding:13px 15px;background:#fff;border:1.5px solid var(--border-med);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--dark-nav)}
-.rr-field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(204,120,92,.12)}
-.rr-consent{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.45;color:var(--muted);cursor:pointer}
-.rr-consent input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--blue)}
-.rr-consent a{color:var(--blue);text-decoration:underline}
-.rr-submit{width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 26px -10px rgba(204,120,92,.55)}
-.rr-submit:hover{background:#b5634a;transform:translateY(-1px)}
-.rr-submit:disabled{opacity:.6;cursor:not-allowed}
-.rr-trust{display:flex;gap:14px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--muted)}
-.rr-trust span::before{content:'✓';color:#22A155;margin-right:5px;font-weight:700}
+.rr-field label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+.rr-field input{width:100%;padding:13px 15px;background:#fff;border:1.5px solid var(--line);border-radius:12px;font-family:var(--sans);font-size:15px;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.rr-field input:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 3px rgba(217,119,87,.12)}
+.rr-field input::placeholder{color:#9aa0ab}
+.rr-consent{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.45;color:var(--gray2);cursor:pointer}
+.rr-consent input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--coral)}
+.rr-consent a{color:var(--coral);text-decoration:underline;text-underline-offset:2px}
+.rr-submit{width:100%;padding:15px;background:var(--coral);color:#fff;border:none;border-radius:980px;font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.01em;cursor:pointer;transition:background .2s,transform .2s;box-shadow:0 10px 26px -10px rgba(217,119,87,.55)}
+.rr-submit:hover{background:var(--coral-deep);transform:translateY(-1px)}
+.rr-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.rr-trust{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:var(--gray)}
+.rr-trust span::before{content:'✓';color:var(--green);margin-right:5px;font-weight:700}
 .rr-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important}
 .rr-error{display:none;font-size:13px;color:#c0392b;padding:10px 12px;background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.25);border-radius:8px}
 .rr-error.show{display:block}
-.rr-success{display:none;text-align:center;padding:24px;background:rgba(34,161,85,.08);border:1px solid rgba(34,161,85,.3);border-radius:12px}
+.rr-success{display:none;text-align:center;padding:24px;background:rgba(26,138,74,.08);border:1px solid rgba(26,138,74,.3);border-radius:12px}
 .rr-success.show{display:block}
-.rr-success h4{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--dark-nav);margin-bottom:6px}
-.rr-success p{font-size:14px;color:var(--muted)}
+.rr-success h4{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:6px}
+.rr-success p{font-size:14px;color:var(--gray2)}
 ```
 
 **2. HTML** (im Hero UND in Early-Access — `data-source` = dein Affiliate-Kürzel `[NAME]`, **NIE** der Seitenname/das Thema):
@@ -326,7 +330,7 @@ CSS (in den `<style>`-Block):
 ```css
 footer { background: var(--dark); padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.07); }
 .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-.footer-brand { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.20); letter-spacing: 0.08em; }
+.footer-brand { font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.20); letter-spacing: 0.08em; }
 .footer-links { display: flex; gap: 24px; }
 .footer-links a { font-size: 13px; color: rgba(255,255,255,0.20); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: rgba(255,255,255,0.55); }
@@ -351,128 +355,54 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
 
 ---
 
-## 🎨 DESIGN SYSTEM v2.3 — VIBECADEMY LEVEL
+## 🎨 DESIGN SYSTEM — REALRISE FLAGSHIP (Apple-White)
 
-> **Design-Referenz:** Die zuletzt erstellte Page im Live-Ordner ist die 1:1 Vorlage.
-> Layout, CSS, Animationen bleiben identisch — nur Inhalte + `?source=[NAME]` tauschen.
+> **Design-Referenz (1:1-Vorlage):** `02_Master_Prompt/_REFERENZ-TEMPLATE.html` + jede Live-Seite (z. B. `04_Daniel_Pages/loops.html`). CSS, Layout & Komponenten daraus 1:1 übernehmen — nur Content + `data-source="[DEIN-KÜRZEL]"` tauschen.
+>
+> ⚠️ Der frühere cream/Cormorant-„VIBECADEMY"-Look ist **abgelöst**. Alle RealRise-Seiten laufen jetzt im **Apple-White-Flagship-Look** (wie realrise-agency.com): ruhig, clean, System-Fonts.
 
-### CSS-Variablen
-
-```css
-:root {
-  --cream:         #f8f4eb;
-  --cream-card:    #fffdf8;
-  --dark:          #0f0f0f;
-  --dark-2:        #1a1714;
-  --dark-nav:      #20283a;
-  /* ⚠️ Akzentfarbe = Claude-Terracotta #cc785c. Variable heißt historisch --blue, enthält aber ORANGE. */
-  --blue:          #cc785c;
-  --blue-pale:     #f8efe9;
-  --gold:          #d8b45a;
-  --warm:          #b46b4e;
-  --muted:         #586174;
-  --border:        rgba(32,40,58,0.10);
-  --border-med:    rgba(32,40,58,0.16);
-  /* Warm-brown: normale Cards */
-  --shadow-card-warm: 0 24px 70px -46px rgba(55,39,25,0.55);
-  /* Orange-Glow: nur hero-card & early-right-card */
-  --shadow-card-blue: 0 20px 70px -58px rgba(32,40,58,0.70), 0 28px 80px -54px rgba(204,120,92,0.48);
-  --shadow-dark:   0 26px 80px -56px rgba(23,19,18,0.90), 0 30px 90px -54px rgba(204,120,92,0.50);
-  --code-bg:       #1a1714;
-  --code-fg:       #f0ece4;
-  --max-w:         1200px;
-  --grid-line:     rgba(23,19,18,0.055);   /* warm — NICHT cool-blau */
-  --grid-size:     44px;
-}
-```
-
-### Body (radial blobs — kein flächiges Grid!)
+### CSS-Variablen (Flagship)
 
 ```css
-body {
-  background-color: var(--cream);
-  background-image:
-    radial-gradient(circle at 12% 0%, rgba(204,120,92,0.18) 0%, transparent 28rem),
-    radial-gradient(circle at 88% 6%, rgba(204,120,92,0.12) 0%, transparent 30rem);
+:root{
+  --sans:-apple-system,'SF Pro Display','SF Pro Text','Inter',system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono','SFMono-Regular',Menlo,Consolas,monospace;
+  --bg:#F5F5F7; --card:#FFFFFF; --ink:#1D1D1F; --gray:#86868B; --gray2:#6E6E73;
+  --line:#E5E5E7; --coral:#d97757; --coral-deep:#a8542e; --green:#1A8A4A;
+  --dark:#161312;
+  --radius:20px; --shadow:0 2px 10px rgba(0,0,0,.04), 0 10px 34px rgba(0,0,0,.06);
+  --spring:cubic-bezier(.4,1.3,.5,1);
 }
 ```
 
-### Grid — selektiv, nicht überall
+**KEINE** Google-Fonts, kein Cormorant, kein DM Sans/Mono → durchgängig System-SF (`var(--sans)`), Code in System-Mono (`var(--mono)`). Hintergrund flach `#F5F5F7` — **keine** radialen Blobs, **kein** Grid-Pattern, **keine** Scanline/Partikel/Hero-Stage-Animationen (der alte Premium-Deko-Kram entfällt — der ruhige Apple-Look IST der Premium-Look).
 
-| Section | Grid |
-|---------|------|
-| Hero | ✅ |
-| How-to | ❌ |
-| Top 3 | ✅ |
-| Dark Section | ❌ |
-| Bonus | ❌ |
-| Early Access | ✅ (sehr dezent, weiß auf dunkel) |
+### Grundregeln
 
-### Shadow-Regel
+- **Headlines:** BOLD System-Font (`font-weight:700`), tight `letter-spacing:-.03em`. KEIN Serif, kein Kursiv. Akzentwort als `<em>` in Coral: `h1 em{font-style:normal;color:var(--coral)}`.
+- **Akzentfarbe:** Coral `#d97757` (Hover `#a8542e`). WhatsApp-Grün `#25d366` nur für WA-Buttons.
+- **Buttons:** 980px-Pills. Primär `.btn-p` (Coral/weiß), Sekundär `.btn-s` (outline). `.rr-submit` = Coral-Pill, volle Breite.
+- **Eyebrow `.ey`:** Coral, uppercase, 12px/600, kurzer Coral-Strich davor (`::before`, 22px).
+- **Cards `.card`:** weiß, `--line`-Border, `--radius` (20px), `--shadow`, Hover `translateY(-4px)`. Raster `.g2` / `.g3`. Icon-/Nummern-Badge `.ic` (44px, `#F5F1EE`, Coral-Zahl).
+- **Dunkle Sektionen `.dark` / `.early`:** bg `#161312` + Coral-Radial-Glow (`::before`), weiße Headline mit Coral-`<em>`. Für „Alle N" (Karten `.dcard`) + Community/Early-Access.
+- **Code-Boxen `.code` / `.dcode`:** dunkel `#161312`, System-Mono, `white-space:pre-line`, Copy-Button oben rechts; mobil `@media(max-width:820px){.code,.dcode{font-size:11px;line-height:1.62}}`.
+- **Reveal:** `.rev` → Klasse `.in` per IntersectionObserver (opacity/translateY). Keine schweren Hero-Animationen mehr.
 
-```
-Normale Cards (step / prompt-card / bonus-card) → NUR warm-brown
-Hero-Card & Early-Access-Card → Orange-Glow (= Featured-Signal)
-```
+### Opt-in-Card `.optin` (Pflicht — im Hero UND Early-Access)
 
-### Hero Stage (Pflicht — macht den Premium-Look)
+Weiße Card (`--radius`, weicher Shadow): Label „Early Access" + Coral-Pill „Kostenlos" oben, Titel, dann die **rr-form** (Pflicht-Block A — Vorname, E-Mail, Handynummer, Consent, Coral-Pill-Submit, Trust-Zeile). In `.early` = dieselbe weiße Card auf dunklem `#161312`-Grund (starker Kontrast = „beitretens-wert").
 
-```css
-.hero-stage {
-  box-shadow: inset 0 1px rgba(255,255,255,0.90), 0 34px 100px -64px rgba(32,40,58,0.68);
-  animation: hero-stage-rise 0.7s cubic-bezier(.16,1,.3,1) both;
-}
-```
-
-+ `.hero-energy-field` (animierte Diagonallinien)
-+ `.hero-scanline` (animierte orange Linie)
-+ Alle 4 Keyframes: `hero-stage-rise`, `hero-energy-pan`, `hero-scanline-pass`, `hero-word-pop`
-
-### Eyebrow-Stil
-
-```css
-.eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.32em;   /* sehr weit — Erkennungsmerkmal */
-  color: rgba(204,120,92,0.76);   /* IMMER Claude-Orange (#CC785C) — kein Blau/Gold */
-}
-.eyebrow::before {
-  background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent);
-}
-/* auf dunklen Sektionen: identisch, nur minimal heller */
-.eyebrow-dark { color: rgba(204,120,92,0.72); }
-.eyebrow-dark::before { background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
-```
-
-### Section Title — tight
-
-```css
-.section-title {
-  font-size: clamp(2rem, 6vw, 3.75rem);
-  line-height: 0.96;
-  letter-spacing: -0.035em;
-}
-```
-
-### Instagram CTA Card (letzter Slot in Dark Section — immer!)
+### Instagram-CTA-Card `.ig-cta` (letzter Slot in der Dark-Section — immer)
 
 ```html
-<div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(204,120,92,0.10), rgba(204,120,92,0.04)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+<div class="ig-cta" style="grid-column:1/-1">
   <div>
-    <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; color:var(--blue); text-transform:uppercase; margin-bottom:16px;">Täglich neues KI-Wissen</div>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,30px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; color:#f0ece4;">
-      Jeden Tag ein Tipp der dir wirklich Zeit spart.
-    </p>
+    <div class="k">Täglich neues KI-Wissen</div>
+    <div class="big">Jeden Tag ein Tipp, der dir wirklich Zeit spart.</div>
   </div>
   <div>
-    <p style="font-size:13px; color:rgba(240,236,228,0.42); line-height:1.65; margin-bottom:20px;">
-      Diese [X] Tipps sind der Anfang. Auf Instagram poste ich täglich neue — direkt anwendbar, kein Fluff.
-    </p>
-    <a href="https://www.instagram.com/[INSTAGRAM_OHNE_@]" target="_blank" rel="noopener"
-       style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(90deg, #833ab4, #e1306c, #fd1d1d, #f77737, #fcaf45); color:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.02em; padding:11px 20px; border-radius:10px; text-decoration:none; box-shadow: 0 16px 34px -20px rgba(225,48,108,0.65);"
-       onmouseover="this.style.opacity='0.88'; this.style.transform='translateY(-2px)'"
-       onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)'">
+    <p>Diese [X] Tipps sind der Anfang. Auf Instagram poste ich täglich neue — direkt anwendbar, kein Fluff.</p>
+    <a class="ig-btn" href="https://www.instagram.com/[INSTAGRAM_OHNE_@]" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
       [INSTAGRAM] folgen
     </a>
@@ -480,130 +410,11 @@ Hero-Card & Early-Access-Card → Orange-Glow (= Featured-Signal)
 </div>
 ```
 
-### Scroll Reveal
+`.ig-btn` behält den Instagram-Verlauf (`linear-gradient(90deg,#833ab4,#e1306c,#fd1d1d,#f77737,#fcaf45)`) als 980px-Pill. Alle Styles siehe `_REFERENZ-TEMPLATE.html`.
 
-```js
-(function() {
-  const els = document.querySelectorAll('section:not(#hero), .step, .prompt-card, .bonus-card, .dark-prompt-card');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  els.forEach((el, i) => {
-    el.style.cssText += `opacity:0; transform:translateY(28px); transition:opacity 0.7s cubic-bezier(.16,1,.3,1) ${i*0.04}s, transform 0.7s cubic-bezier(.16,1,.3,1) ${i*0.04}s;`;
-    obs.observe(el);
-  });
-})();
-```
+### Layout folgt dem Content (nicht stur dasselbe Skelett)
 
-### Early Access — Bühne mit Benefits + Trust (Pflicht — macht's „beitretens-wert")
-
-Die linke Spalte der Early-Access-Sektion **NIE leer lassen** (nur Headline + 1 Satz wirkt schwach, nicht wie etwas wo man beitreten will). Immer:
-- 3–4 **konkrete Benefits** mit **orangem Checkmark** — nur **WAHRE** Aussagen, keine erfundenen Zahlen (Wahrheitspflicht!)
-- Eine **Trust-Reihe** unten: Kostenlos · Kein Spam · Jederzeit verlassen
-
-```css
-.early-benefits { list-style:none; margin:28px 0 0; display:flex; flex-direction:column; gap:13px; }
-.early-benefits li { display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:rgba(240,236,228,0.82); line-height:1.5; }
-.early-benefits li::before { content:'✓'; color:var(--blue); font-weight:700; font-size:13px; margin-top:1px; flex-shrink:0; }
-.early-trust { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:30px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.08); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(240,236,228,0.42); }
-.early-trust .trust-dot { opacity:0.4; }
-```
-```html
-<ul class="early-benefits">
-  <li>Täglich neue Prompts, Workflows &amp; KI-Tools — direkt anwendbar</li>
-  <li>Direkter Draht zu uns: stell deine Fragen, bekomm echte Antworten</li>
-  <li>Alle RealRise Guides &amp; Funnel-Pages komplett kostenlos</li>
-  <li>Immer als Erstes informiert, wenn neue Inhalte &amp; Tools erscheinen</li>
-</ul>
-<div class="early-trust">
-  <span>Kostenlos</span><span class="trust-dot">•</span>
-  <span>Kein Spam</span><span class="trust-dot">•</span>
-  <span>Jederzeit verlassen</span>
-</div>
-```
-
-### Dunkle Sektionen & CTA — KONSEQUENT CLAUDE-ORANGE (kein Gold/Lila!)
-
-⚠️ **Wichtigste Farb-Regel:** Claude-Orange (`--blue` = `#cc785c`) ist die **EINZIGE Akzentfarbe** — auf hell UND auf dunkel. **Kein Gold, kein Warm, kein Lila-Gradient.** Gemischte Akzente wirken „zusammengewürfelt / AI-gebastelt". Einzige Ausnahme: **Grün `#22A155`** nur für den live-Punkt + Trust-Häkchen (✓ Kostenlos etc.).
-- **Eyebrow:** Claude-orange (`rgba(204,120,92,0.72)`) mit Gradient-Linie orange→orange
-- **Headline-em:** **solid orange** via `background:var(--blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;` (oder schlicht `color:var(--blue)`) — KEIN orange→lila→warm-Gradient
-- **Buttons auf Dunkel:** **solid orange** (`background:var(--blue); color:#fff`) — KEIN Gold
-- **Glows:** orange radial-gradients (kein Gold/Braun)
-- **Textur:** dezentes weißes Grid (radial-maskiert) + optionale **orange Haarlinie** oben
-
-```css
-/* Orange-Button auf Dunkel */
-.btn-cta { background:var(--blue); color:#fff; font-weight:600; box-shadow:0 10px 30px -10px rgba(204,120,92,0.55); }
-.btn-cta:hover { background:var(--blue-2); transform:translateY(-2px); box-shadow:0 16px 40px -10px rgba(204,120,92,0.65); }
-/* Dunkles CTA-Banner: orange Glows + Grid + orange Hairline */
-.cta-inner {
-  background: var(--dark-2);
-  background-image:
-    radial-gradient(ellipse at 82% 0%, rgba(204,120,92,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 2% 100%, rgba(204,120,92,0.08) 0%, transparent 52%);
-  border: 1px solid rgba(255,255,255,0.07);
-}
-.cta-inner::before { /* dezentes Grid, radial-maskiert */ }
-.cta-inner::after  { /* 1px orange Haarlinie oben: linear-gradient(90deg, transparent, var(--blue), transparent) */ }
-```
-
-### Nummern-Badge (ÜBERALL identisch — Steps, Top-N, Dark-Section, Bonus)
-
-Jede Nummerierung = **dasselbe Badge**. KEINE Text-Nummern, keine Suffixe wie „Top Hebel"/„Bonus" — nur die Zahl.
-
-```css
-/* hell (Steps, Top-N, Bonus) */
-.num-badge { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; background:var(--blue-pale); border:1px solid rgba(204,120,92,0.15); font-family:'DM Mono',monospace; font-size:12px; font-weight:500; color:var(--blue); margin-bottom:16px; flex-shrink:0; }
-/* dunkel (Dark-Section) */
-.num-badge--dark { background:rgba(204,120,92,0.16); border-color:rgba(204,120,92,0.26); color:#e0a890; }
-```
-HTML: `<div class="num-badge">01</div>` — nur die Zahl, nichts dahinter.
-
-### Code-Box (ÜBERALL identisch)
-Immer solid `#1a1714` (`var(--code-bg)`) — auch auf hellen Cards (Bonus). NIE halbtransparentes Schwarz (`rgba(0,0,0,0.38)`) auf hellem Grund → wird zu hässlichem Grau.
-
-**Diese CSS exakt übernehmen** (nicht frei neu generieren):
-
-```css
-.code-box {
-  position: relative;                 /* PFLICHT: Anker für den Button */
-  background: var(--code-bg); color: var(--code-fg);
-  border: 1px solid rgba(255,255,255,0.07); border-radius: 16px;
-  padding: 20px 22px;
-  padding-top: 48px;                  /* PFLICHT: Platz für den Button — sonst überlappt er den Code */
-  font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.78;
-  white-space: pre-line; word-break: break-word;  /* PFLICHT: pre-line (NIE pre-wrap) — sonst bleibt manuelle Einrückung erhalten = hängender Indent am Handy */
-}
-/* PFLICHT Mobile (@media max-width:900px): Code-Boxen kleiner für sauberen Umbruch */
-@media (max-width: 900px) {
-  .code-box, .dark-code-box { font-size: 11px; line-height: 1.62; padding-left: 16px; padding-right: 16px; }
-}
-.copy-btn {
-  position: absolute; top: 12px; right: 12px;
-  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.10em;
-  text-transform: uppercase; font-weight: 500; cursor: pointer;
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45);
-  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 6px 14px;
-  transition: all 0.15s;
-}
-```
-
-⚠️ **Häufiger Bug:** Der `.copy-btn` ist `position:absolute` (oben rechts). Ohne `position:relative` **und** `padding-top:48px` auf `.code-box` legt sich der „Kopieren"-Button auf die erste Code-Zeile. Diese zwei Zeilen sind nicht optional.
-
----
-
-### 🔧 Farb-Korrektur (Alt-Seite auf Claude-Orange umfärben)
-
-Falls eine bestehende Seite noch Gold/Warm/Lila-Akzente hat (alte Generation), diesen Befehl an Claude geben:
-
-> Mach die Seite konsequent Claude-Orange. Ersetze ALLE Gold-/Warm-/Lila-Akzente durch Claude-Orange `#cc785c`:
-> Eyebrows, Buttons (auch auf Dunkel = solid orange), Checkmarks, Glows/Radial-Gradients, Headline-Kursiv-Betonungen (`em`), Body-Blobs, Card-Hintergründe.
-> Einzige Ausnahmen, die bleiben: Grün `#22A155` für live-Punkt + Trust-Häkchen, der warm-braune Card-Schatten, die Grid-Linie und der Instagram-Marken-Button (Instagrams eigene Farben).
-> Kein Gold, kein `--warm` als Akzent, kein Lila-Gradient mehr.
-
----
+Reihenfolge-Baukasten wie in `loops.html`: **Hero (Bold-H1 + Opt-in-Card)** → **How/3 Schritte (`.g3`)** → **Top-3 (`.prompt` + `.code`)** → **Dark „Alle N" (`.dcard`/`.dcode` + `.ig-cta`)** → **Bonus (`.g2`)** → **Community/Early-Access (`.early` + Opt-in-Card)** → **Footer**. Vergleichs-Themen (z. B. Modell A vs. B) dürfen eine Vergleichs-Sektion im dunklen `.dark`-Stil bekommen (siehe `fable.html`).
 
 ## ✅ QUALITY CHECK VOR JEDER PAGE (Pflicht)
 
@@ -684,7 +495,7 @@ Das Design-System (Farben, Fonts, Hero, Eyebrows, Dark-Section, Custom-Form, Foo
 
 ## FUNNEL-PAGE STRUKTUR
 
-**Fonts:** Cormorant Garamond · DM Mono · DM Sans (Google Fonts)
+**Fonts:** System-SF (`-apple-system` / SF Pro / Inter → `var(--sans)`) — **keine** Google-Fonts mehr. Code in System-Mono (`var(--mono)`).
 
 1. **NAV** — Fixed, glasmorphism, Links: „RealRise / [THEMA]", Rechts: „Top 3" · „Alle [X]" · „Bonus" · „Community"
 2. **HERO** (Grid ✅) — hero-stage + energy-field + scanline, Links: H1 + Subtitle, Rechts: hero-card (orange-glow) + **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`)
