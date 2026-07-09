@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════
+  REALRISE — REFERENZ-TEMPLATE (v2.3)  ·  DIE EINZIGE WAHRHEIT
+═══════════════════════════════════════════════════════════════
+  SO BENUTZEN: Diese Datei KOPIEREN und nur Inhalte austauschen.
+  Struktur, CSS, Sektionen, Scripts, Animationen, Design-Tokens
+  NIEMALS neu generieren oder "nachbauen" — nur KOPIEREN.
+
+  ✏️  DAS ÄNDERST DU (nur Inhalt):
+   • <title> — Seitentitel zum Thema
+   • Hero-Headline + Subline
+   • Top-3-Cards (Titel + Prompt-Text)
+   • Dark-Grid: alle weiteren Prompts/Hacks
+   • Bonus-Sektion
+   • data-source="larissa"  (×2 — dein Affiliate-Name, z.B. "regina")
+   • @larissawegener  (×3 — Follow-Button, Footer, <title>)
+
+  🔒  NIEMALS ANFASSEN (sonst driftet das Design):
+   • Der gesamte <style>-Block (Design-Tokens + alle CSS-Regeln)
+   • Hero-Card-Titel "Werde Teil der RealRise Community"
+   • Opt-in-Webhook (RR_WEBHOOK) + Redirect ki.realrise-agency.com/guides
+   • Meta-Pixel-ID, Honeypot (.rr-hp), Consent-Checkbox
+   • Nav, Footer-Struktur, Buttons, Code-Box, Keyframes
+
+  Der vorhandene Inhalt = Daniels token-sparen-Seite als BEISPIEL.
+  Ersetze ihn komplett durch dein Thema — alles drumherum bleibt 1:1.
+═══════════════════════════════════════════════════════════════
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loops schreiben statt prompten — @larissawegener</title>
+  <meta name="description" content="Nicht mehr prompten, sondern Loops schreiben: Du gibst ein Ziel plus Abbruchbedingung vor — Claude arbeitet, prüft sich selbst und korrigiert, bis es steht.">
+
+  <!-- ===== Cookie-Consent + Meta Pixel (DSGVO) ===== -->
+  <script>
+  /* RealRise Cookie-Consent — Meta Pixel feuert ERST nach Einwilligung (Marketing). */
+  (function(){
+    var KEY='rr_consent_v1', PID='1367349055288604';
+    function loadPixel(){
+      if(window.__rrPx)return; window.__rrPx=1;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init',PID); fbq('track','PageView');
+    }
+    function get(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
+    function set(c){try{localStorage.setItem(KEY,JSON.stringify(c))}catch(e){}}
+    function apply(c){if(c&&c.marketing)loadPixel();}
+    window.rrTrackLead=function(){var c=get();if(c&&c.marketing&&window.fbq)fbq('track','Lead');};
+    window.rrCookieSettings=function(){build();};
+    var saved=get(); if(saved)apply(saved);
+    function build(){
+      if(document.getElementById('rr-cookie'))return;
+      var s=document.createElement('style');
+      s.textContent="#rr-cookie{position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;justify-content:center;padding:18px;font-family:'DM Sans',-apple-system,Segoe UI,Roboto,sans-serif;animation:rrcup .5s cubic-bezier(.16,1,.3,1)}@keyframes rrcup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}#rr-cookie .rrc{background:#fffdf8;border:1px solid rgba(20,20,19,.10);border-radius:20px;box-shadow:0 30px 70px -20px rgba(20,20,19,.35);max-width:460px;width:100%;padding:26px 28px}#rr-cookie h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;font-weight:600;color:#141413;margin:0 0 10px}#rr-cookie p{font-size:13.5px;line-height:1.6;color:#5b5b54;margin:0 0 16px}#rr-cookie a{color:#cc785c}#rr-cookie .rrc-opt{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid rgba(20,20,19,.08);cursor:pointer;font-size:14px;color:#141413;font-weight:600}#rr-cookie .rrc-opt input{width:18px;height:18px;accent-color:#cc785c;flex:none;cursor:pointer}#rr-cookie .rrc-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}#rr-cookie .rrc-btns button{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 18px;border-radius:10px;cursor:pointer;border:1px solid rgba(20,20,19,.18);font-weight:500;background:#fff;color:#141413}#rr-cookie .rrc-accept{background:#cc785c;border-color:#cc785c;color:#fff;flex:1;min-width:130px}";
+      document.head.appendChild(s);
+      var w=document.createElement('div'); w.id='rr-cookie';
+      w.innerHTML='<div class="rrc" role="dialog" aria-label="Cookie-Einstellungen"><h4>Wir verwenden Cookies</h4><p>Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu optimieren, dein Nutzererlebnis zu verbessern und unsere Marketing-Aktivitäten zu messen. Notwendige Cookies sind immer aktiv. Mehr in unserer <a href="https://realrise-agency.com/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p><label class="rrc-opt"><input type="checkbox" id="rrc-stat"> Statistik &amp; Analyse</label><label class="rrc-opt"><input type="checkbox" id="rrc-mkt"> Marketing &amp; Werbung</label><div class="rrc-btns"><button class="rrc-accept" data-r="a">Alle akzeptieren</button><button class="rrc-reject" data-r="r">Alle ablehnen</button><button class="rrc-confirm" data-r="c">Auswahl bestätigen</button></div></div>';
+      document.body.appendChild(w);
+      function close(){w.parentNode&&w.parentNode.removeChild(w);}
+      w.querySelector('[data-r=a]').onclick=function(){var c={statistik:true,marketing:true};set(c);apply(c);close();};
+      w.querySelector('[data-r=r]').onclick=function(){set({statistik:false,marketing:false});close();};
+      w.querySelector('[data-r=c]').onclick=function(){var c={statistik:document.getElementById('rrc-stat').checked,marketing:document.getElementById('rrc-mkt').checked};set(c);apply(c);close();};
+    }
+    if(!saved){ if(document.readyState!=='loading')build(); else document.addEventListener('DOMContentLoaded',build); }
+  })();
+  </script>
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:         #f8f4eb;
+      --cream-card:    #fffdf8;
+      --cream-section: #f3ead8;
+      --dark:          #0f0f0f;
+      --dark-2:        #1a1714;
+      --dark-nav:      #20283a;
+      --blue:          #cc785c;
+      --blue-2:        #b5634a;
+      --blue-pale:     #f8efe9;
+      --gold:          #d8b45a;
+      --warm:          #b46b4e;
+      --muted:         #586174;
+      --border:        rgba(32,40,58,0.10);
+      --border-med:    rgba(32,40,58,0.16);
+      --shadow-card-warm: 0 24px 70px -46px rgba(55,39,25,0.55);
+      --shadow-card-blue: 0 20px 70px -58px rgba(32,40,58,0.70), 0 28px 80px -54px rgba(204,120,92,0.48);
+      --shadow-dark:   0 26px 80px -56px rgba(23,19,18,0.90), 0 30px 90px -54px rgba(204,120,92,0.50);
+      --code-bg:       #1a1714;
+      --code-fg:       #f0ece4;
+      --max-w:         1200px;
+      --grid-line:     rgba(23,19,18,0.055);
+      --grid-size:     44px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(circle at 12% 0%, rgba(204,120,92,0.18) 0%, transparent 28rem),
+        radial-gradient(circle at 88% 6%, rgba(204,120,92,0.12) 0%, transparent 30rem);
+      color: var(--dark-nav);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes hero-stage-rise {
+      0%   { opacity: 0; filter: blur(10px); transform: translateY(18px) scale(0.985); }
+      100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+    }
+    @keyframes hero-energy-pan {
+      0%   { background-position: 0 0, 0 0, 50%; }
+      100% { background-position: 90px 0, 0 90px, 50%; }
+    }
+    @keyframes hero-scanline-pass {
+      0%       { opacity: 0; transform: translateX(-100%); }
+      18%, 60% { opacity: 1; }
+      100%     { opacity: 0; transform: translateX(100%); }
+    }
+    @keyframes hero-word-pop {
+      0%   { opacity: 0; filter: blur(8px); transform: translateY(0.5em) rotateX(48deg); }
+      70%  { opacity: 1; filter: blur(0); transform: translateY(-0.04em) rotateX(0); }
+      100% { opacity: 1; filter: blur(0); transform: translateY(0) rotateX(0); }
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(0.8); }
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(248,244,235,0.92);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--dark-nav); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-brand span { color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: rgba(32,40,58,0.55); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all 0.15s; }
+    .nav-links a:hover { background: rgba(32,40,58,0.06); color: var(--dark-nav); }
+
+    #hero {
+      padding-top: 100px; padding-bottom: 0;
+      background-color: var(--cream);
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+      background-size: var(--grid-size) var(--grid-size);
+      position: relative; overflow: hidden;
+    }
+    #hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, transparent, var(--cream)); pointer-events: none; z-index: 2; }
+    .hero-glow-1 { position: absolute; top: -100px; right: -100px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(204,120,92,0.09) 0%, transparent 60%); pointer-events: none; }
+    .hero-glow-2 { position: absolute; bottom: -50px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(204,120,92,0.07) 0%, transparent 60%); pointer-events: none; }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; padding: 56px 40px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; position: relative; z-index: 1; }
+    .hero-stage-wrap { padding: 0 0 20px; }
+    .hero-stage {
+      isolation: isolate;
+      background: linear-gradient(rgba(255,253,248,0.82), rgba(255,255,255,0.56)), linear-gradient(135deg, rgba(204,120,92,0.08), rgba(180,107,78,0.06));
+      border: 1px solid rgba(32,40,58,0.10); border-radius: 28px; padding: 40px 44px 48px;
+      position: relative; overflow: hidden;
+      box-shadow: inset 0 1px rgba(255,255,255,0.90), 0 34px 100px -64px rgba(32,40,58,0.68);
+      animation: hero-stage-rise 0.7s cubic-bezier(.16,1,.3,1) both;
+    }
+    .hero-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(204,120,92,0.08), transparent 28%, rgba(204,120,92,0.10) 58%, transparent), repeating-linear-gradient(90deg, rgba(32,40,58,0.04) 0 1px, transparent 1px 92px); }
+    .hero-energy-field { position: absolute; inset: 0; pointer-events: none; opacity: 0.6; background: repeating-linear-gradient(115deg, transparent 0 38px, rgba(204,120,92,0.05) 38px 39px, transparent 39px 88px), repeating-linear-gradient(25deg, transparent 0 52px, rgba(180,107,78,0.04) 52px 53px, transparent 53px 112px), linear-gradient(135deg, rgba(204,120,92,0.08), transparent 36%, rgba(204,120,92,0.10)); animation: hero-energy-pan 18s linear infinite; mask-image: linear-gradient(#000 0 72%, transparent 100%); -webkit-mask-image: linear-gradient(#000 0 72%, transparent 100%); }
+    .hero-scanline { position: absolute; left: 0; right: 0; top: 0; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, rgba(204,120,92,0.50), rgba(204,120,92,0.36), transparent); animation: hero-scanline-pass 5.5s cubic-bezier(.16,1,.3,1) 0.8s infinite; }
+    .hero-stage-content { position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-pale); border: 1px solid rgba(204,120,92,0.18); border-radius: 100px; padding: 5px 14px 5px 10px; margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    .hero-badge span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); font-weight: 500; }
+    .date-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .hero-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 5vw, 66px); font-weight: 400; line-height: 1.08; color: var(--dark-nav); margin-bottom: 28px; letter-spacing: -0.01em; }
+    .hero-h1 em { font-style: italic; background: var(--blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 420px; }
+    .hero-card-wrap { position: relative; }
+    .hero-card-glow { position: absolute; inset: -40px; background: radial-gradient(ellipse at 60% 40%, rgba(204,120,92,0.12) 0%, transparent 65%); pointer-events: none; border-radius: 50%; }
+    .hero-card { position: relative; background: var(--cream-card); border: 1px solid var(--border-med); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-card-blue); }
+    .hero-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .hero-card-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .hero-card-badge { background: rgba(204,120,92,0.15); border: 1px solid rgba(204,120,92,0.3); border-radius: 100px; padding: 3px 10px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: #cc785c; font-weight: 500; }
+    .hero-card-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--dark-nav); margin-bottom: 20px; line-height: 1.3; }
+
+    section { padding: 96px 40px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(204,120,92,0.76); display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; flex-shrink: 0; background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
+    .eyebrow.gold { color: rgba(204,120,92,0.85); }
+    .eyebrow.gold::before { background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.75rem); font-weight: 400; line-height: 0.96; letter-spacing: -0.035em; color: var(--dark-nav); margin-bottom: 12px; }
+    .section-desc { font-size: 15px; color: var(--muted); margin-bottom: 48px; }
+
+    #how-to-use { background-color: var(--cream); border-top: 1px solid var(--border); }
+    .how-to-header { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+    .how-to-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 4vw, 50px); font-weight: 400; line-height: 1.08; color: var(--dark-nav); letter-spacing: -0.02em; }
+    .how-to-header p { font-size: 15px; color: var(--muted); line-height: 1.78; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .step { background: var(--cream-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; box-shadow: var(--shadow-card-warm); transition: box-shadow 0.2s, transform 0.2s; }
+    .step:hover { box-shadow: 0 28px 80px -42px rgba(55,39,25,0.68); transform: translateY(-2px); }
+    .step-icon { width: 40px; height: 40px; background: var(--blue-pale); border: 1px solid rgba(204,120,92,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue); font-weight: 500; }
+    .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--dark-nav); margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    #top3 { background-color: var(--cream); background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(to right, var(--grid-line) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); border-top: 1px solid var(--border); }
+    .prompt-card { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--cream-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-card-warm); margin-bottom: 16px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .prompt-card:hover { box-shadow: 0 28px 80px -42px rgba(55,39,25,0.68); border-color: var(--border-med); }
+    .prompt-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--blue-pale); border: 1px solid rgba(204,120,92,0.15); border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue); margin-bottom: 16px; font-weight: 500; flex-shrink: 0; }
+    .prompt-left h3 { font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 500; color: var(--dark-nav); line-height: 1.18; margin-bottom: 12px; }
+    .prompt-left p { font-size: 14px; color: var(--muted); line-height: 1.72; }
+    .info-rows { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .info-row { display: flex; gap: 14px; }
+    .info-key { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.07em; color: var(--blue); min-width: 78px; padding-top: 2px; font-weight: 500; text-transform: uppercase; }
+    .info-val { font-size: 13.5px; color: var(--dark-nav); line-height: 1.5; }
+    .code-box { background: var(--code-bg); border-radius: 16px; padding: 20px 22px; padding-top: 48px; position: relative; font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.78; color: var(--code-fg); border: 1px solid rgba(255,255,255,0.07); white-space: pre-line; word-break: break-word; }
+    .copy-btn { position: absolute; top: 12px; right: 12px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 8px; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+    .copy-btn:hover { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.85); }
+    .copy-btn.copied { color: #4ade80; border-color: rgba(74,222,128,0.3); }
+
+    #all-prompts { background: var(--dark); position: relative; overflow: hidden; }
+    #all-prompts canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .dark-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+    .dark-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(204,120,92,0.72); display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
+    .dark-eyebrow::before { background: linear-gradient(90deg, transparent, var(--blue) 48%, var(--blue)); }
+    .dark-eyebrow::after { background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
+    .dark-eyebrow::before, .dark-eyebrow::after { content: ''; display: block; width: 28px; height: 1px; }
+    .dark-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; line-height: 0.96; letter-spacing: -0.035em; color: #f0ece4; margin-bottom: 14px; text-align: center; }
+    .dark-title em { font-style: italic; background: var(--blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .dark-desc { text-align: center; font-size: 15px; color: rgba(240,236,228,0.48); margin-bottom: 60px; }
+    .prompt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .dark-prompt-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px; transition: background 0.2s, border-color 0.2s; }
+    .dark-prompt-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.13); }
+    .dark-prompt-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(204,120,92,0.16); border: 1px solid rgba(204,120,92,0.26); border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 12px; color: #e0a890; margin-bottom: 16px; font-weight: 500; flex-shrink: 0; }
+    .dark-prompt-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: #f0ece4; margin-bottom: 8px; line-height: 1.2; }
+    .dark-prompt-card p { font-size: 13.5px; color: rgba(240,236,228,0.48); line-height: 1.65; margin-bottom: 16px; }
+    .dark-code-box { background: rgba(0,0,0,0.38); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px 18px; padding-top: 38px; position: relative; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.72; color: var(--code-fg); white-space: pre-line; word-break: break-word; }
+    .mini-copy-btn { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.36); border: 1px solid rgba(255,255,255,0.10); padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .mini-copy-btn:hover { background: rgba(255,255,255,0.13); color: rgba(255,255,255,0.75); }
+    .mini-copy-btn.copied { color: #4ade80; }
+
+    #bonus { background: var(--cream); border-top: 1px solid var(--border); }
+    .bonus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .bonus-card { background: var(--cream-card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; box-shadow: var(--shadow-card-warm); transition: box-shadow 0.2s, transform 0.2s; }
+    .bonus-card:hover { box-shadow: 0 28px 80px -42px rgba(55,39,25,0.68); transform: translateY(-2px); }
+    .bonus-label { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--blue-pale); border: 1px solid rgba(204,120,92,0.15); border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue); margin-bottom: 16px; font-weight: 500; flex-shrink: 0; }
+    .bonus-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; font-style: italic; color: var(--blue); margin-bottom: 8px; }
+    .bonus-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+    /* Bonus-Code-Boxen: solid dunkel (wie Top-3 .code-box) statt transparentes Grau */
+    #bonus .dark-code-box { background: var(--code-bg); border-color: rgba(255,255,255,0.07); }
+
+    #early-access { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.06); padding: 96px 40px; position: relative; overflow: hidden; }
+    #early-access::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: var(--grid-size) var(--grid-size); pointer-events: none; }
+    .early-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; position: relative; z-index: 1; }
+    .eyebrow-dark { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(204,120,92,0.72); display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .eyebrow-dark::before { content: ''; display: block; width: 28px; height: 1px; background: linear-gradient(90deg, var(--blue), var(--blue) 52%, transparent); }
+    .early-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.2vw, 52px); font-weight: 400; line-height: 1.08; color: #f0ece4; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .early-left h2 em { font-style: italic; color: var(--blue); }
+    .early-left p { font-size: 15px; color: rgba(240,236,228,0.50); line-height: 1.78; }
+    .early-benefits { list-style: none; margin: 28px 0 0; display: flex; flex-direction: column; gap: 13px; }
+    .early-benefits li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: rgba(240,236,228,0.82); line-height: 1.5; }
+    .early-benefits li::before { content: '✓'; color: var(--blue); font-weight: 700; font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+    .early-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,236,228,0.42); }
+    .early-trust .trust-dot { opacity: 0.4; }
+    .early-right-card { background: var(--cream-card); border-radius: 24px; padding: 8px; box-shadow: var(--shadow-dark); }
+    .early-right-card iframe { width: 100%; min-height: 420px; border: none; display: block; background: #fff; border-radius: 18px; }
+
+    /* ── Custom Lead-Form (ersetzt GHL-iframe) ── */
+    .rr-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .rr-field { display: flex; flex-direction: column; gap: 6px; }
+    .rr-field label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .rr-field input { width: 100%; padding: 13px 15px; background: #fff; border: 1.5px solid var(--border-med); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--dark-nav); transition: border-color 0.15s, box-shadow 0.15s; }
+    .rr-field input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(204,120,92,0.12); }
+    .rr-field input::placeholder { color: #9aa0ab; }
+    .rr-consent { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; line-height: 1.45; color: var(--muted); cursor: pointer; }
+    .rr-consent input { margin-top: 2px; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--blue); }
+    .rr-consent a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .rr-submit { width: 100%; padding: 15px; background: var(--blue); color: #fff; border: none; border-radius: 10px; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.2s; box-shadow: 0 10px 26px -10px rgba(204,120,92,0.55); }
+    .rr-submit:hover { background: #b5634a; transform: translateY(-1px); }
+    .rr-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .rr-trust { display: flex; gap: 14px; flex-wrap: wrap; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    .rr-trust span::before { content: '✓'; color: #22A155; margin-right: 5px; font-weight: 700; }
+    .rr-hp { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; }
+    .rr-error { display: none; font-size: 13px; color: #c0392b; padding: 10px 12px; background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.25); border-radius: 8px; }
+    .rr-error.show { display: block; }
+    .rr-success { display: none; text-align: center; padding: 24px; background: rgba(34,161,85,0.08); border: 1px solid rgba(34,161,85,0.3); border-radius: 12px; }
+    .rr-success.show { display: block; }
+    .rr-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--dark-nav); margin-bottom: 6px; }
+    .rr-success p { font-size: 14px; color: var(--muted); }
+
+    footer { background: var(--dark); padding: 32px 40px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .footer-brand { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.20); letter-spacing: 0.08em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.20); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.55); }
+
+    @media (max-width: 900px) {
+      .code-box, .dark-code-box { font-size: 11px; line-height: 1.62; padding-left: 16px; padding-right: 16px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 72px 20px; }
+      #hero { padding: 0; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 100px 20px 64px; }
+      .hero-stage { padding: 28px 24px 36px; }
+      .how-to-header { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .prompt-card { grid-template-columns: 1fr; gap: 24px; }
+      .prompt-grid { grid-template-columns: 1fr; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      #early-access { padding: 72px 20px; }
+      .early-inner { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-stage, .hero-energy-field, .hero-scanline, .hero-badge-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#">RealRise <span>/ Loop Engineering</span></a>
+    <div class="nav-links">
+      <a href="#top3">Top 3</a>
+      <a href="#all-prompts">Alle 6</a>
+      <a href="#bonus">Bonus</a>
+      <a href="#early-access">Community</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+      <div class="hero-stage-wrap">
+        <div class="hero-stage">
+          <div class="hero-energy-field"></div>
+          <div class="hero-scanline"></div>
+          <div class="hero-stage-content">
+            <div class="hero-badge">
+              <div class="hero-badge-dot"></div>
+              <span>Loop Engineering · Claude</span>
+            </div>
+            <div class="date-tag">Live seit 9. Juli 2026</div>
+            <h1 class="hero-h1">
+              Nicht mehr prompten.<br>
+              Sondern<br>
+              <em>Loops schreiben.</em>
+            </h1>
+            <p class="hero-subtitle">
+              Boris Cherny baut Claude Code bei Anthropic — und prompt nicht mehr. Er gibt ein Ziel plus eine klare Abbruchbedingung vor. Claude arbeitet, prüft sich selbst und korrigiert, bis das Ziel steht.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card-wrap">
+          <div class="hero-card-glow"></div>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-label">Early Access</div>
+              <div class="hero-card-badge">Kostenlos</div>
+            </div>
+            <div class="hero-card-title">Werde Teil der RealRise Community</div>
+            <!-- Custom Lead-Form → GHL Inbound Webhook -->
+            <form class="rr-form" data-source="larissa" data-placement="hero" data-phone="required" novalidate>
+              <div class="rr-field">
+                <label>Vorname</label>
+                <input type="text" name="first_name" placeholder="Dein Vorname" autocomplete="given-name" required>
+              </div>
+              <div class="rr-field">
+                <label>E-Mail</label>
+                <input type="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
+              </div><div class="rr-field rr-phone" style="display:none"><label>Handynummer</label><input type="tel" name="phone" placeholder="+49 151 23456789" autocomplete="tel" inputmode="tel"></div>
+              <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label class="rr-consent">
+                <input type="checkbox" name="consent" required>
+                <span>Ich bin einverstanden, von RealRise E-Mails zu erhalten. Jederzeit abmeldbar. <a href="https://realrise-agency.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a>.</span>
+              </label>
+              <button type="submit" class="rr-submit">Zugang sichern →</button>
+              <div class="rr-trust"><span>Kostenlos</span><span>Kein Spam</span><span>Jederzeit abmeldbar</span></div>
+              <div class="rr-error" role="alert"></div>
+              <div class="rr-success"><h4>Top, du bist dabei!</h4><p>Check deine Mails — dein Zugang ist unterwegs.</p></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-to-use">
+    <div class="section-inner">
+      <div class="how-to-header">
+        <div>
+          <div class="eyebrow">So schreibst du deinen ersten Loop</div>
+          <h2>Drei Schritte —<br><em style="font-style:italic; color:var(--blue)">vom Prompt zum Loop</em></h2>
+        </div>
+        <p>Du brauchst dafür keine Entwickler-Kenntnisse und kein neues Tool. Ein Loop ist nur ein Prompt mit Ziel, Abbruchbedingung und Selbstprüfung — der Rest läuft von allein.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-icon">01</div>
+          <h3>Ziel statt Aufgabe</h3>
+          <p>Sag nicht, was Claude tun soll — sag, woran man erkennt, dass das Ziel erreicht ist. Das ist der Startpunkt jedes Loops.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">02</div>
+          <h3>Abbruchbedingung setzen</h3>
+          <p>Eine messbare Bedingung, ab wann Schluss ist: alle Tests grün, alle Punkte abgehakt, alle Kriterien erfüllt. Ohne sie läuft nichts los.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">03</div>
+          <h3>Selbstprüfung erlauben</h3>
+          <p>Gib Claude die Erlaubnis, sich selbst zu prüfen und zu korrigieren — plus ein Limit, damit der Loop sicher endet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top3">
+    <div class="section-inner">
+      <div class="eyebrow">Die drei Loop-Bausteine</div>
+      <h2 class="section-title">Top 3 Loops</h2>
+      <p class="section-desc">Diese drei machen aus fast jeder Aufgabe einen selbstlaufenden Loop — fang hier an.</p>
+
+      <div class="prompt-card">
+        <div class="prompt-left">
+          <div class="prompt-num">01</div>
+          <h3>Ziel + Abbruchbedingung</h3>
+          <p>Der Kern jedes Loops. Du beschreibst nicht die Schritte, sondern das Ziel und eine messbare Bedingung, wann Schluss ist. Claude arbeitet und prüft sich selbst gegen diese Bedingung.</p>
+          <div class="info-rows">
+            <div class="info-row"><span class="info-key">Einsatz</span><span class="info-val">Als Kopf jedes Auftrags statt einer offenen Frage</span></div>
+            <div class="info-row"><span class="info-key">Wirkung</span><span class="info-val">Claude korrigiert sich selbst — du prüfst nur das Endergebnis</span></div>
+          </div>
+        </div>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText(this)">Kopieren</button>
+LOOP-AUFTRAG (Ziel statt Aufgabe)
+
+Ziel: [was am Ende stehen soll]
+
+Fertig wenn: [messbare Abbruchbedingung]
+
+Selbstprüfung:
+Prüfe dein Ergebnis gegen „Fertig wenn".
+Wenn nicht erfüllt: überarbeite und
+prüfe erneut.
+
+Stopp:
+Melde dich erst wenn erfüllt —
+oder nach maximal 3 Durchläufen.</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-left">
+          <div class="prompt-num">02</div>
+          <h3>Der Selbst-Review-Loop</h3>
+          <p>Der einfachste Loop, der in jedem Chat funktioniert — kein Code nötig. Claude schreibt, bewertet sich gegen deine Kriterien, überarbeitet und wiederholt, bis alle Kriterien erfüllt sind.</p>
+          <div class="info-rows">
+            <div class="info-row"><span class="info-key">Einsatz</span><span class="info-val">Texte, Konzepte, E-Mails, jede kreative Aufgabe</span></div>
+            <div class="info-row"><span class="info-key">Wirkung</span><span class="info-val">Deutlich bessere erste Version — ohne dein Nachhaken</span></div>
+          </div>
+        </div>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText(this)">Kopieren</button>
+SELBST-REVIEW-LOOP
+
+1. Schreibe [X].
+
+2. Bewerte dein Ergebnis gegen
+   diese 3 Kriterien:
+   - [Kriterium 1]
+   - [Kriterium 2]
+   - [Kriterium 3]
+
+3. Überarbeite alles, was nicht erfüllt ist.
+
+4. Wiederhole Schritt 2–3,
+   bis alle 3 Kriterien erfüllt sind.
+
+5. Zeig mir erst dann das Endergebnis.</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-left">
+          <div class="prompt-num">03</div>
+          <h3>Der Test-Loop in Claude Code</h3>
+          <p>Der echte Loop-Engineering-Move: Claude Code baut, führt die Tests aus, sieht was rot ist, behebt es und testet erneut — ganz allein, bis alles grün ist. Das ist Boris Chernys Alltag.</p>
+          <div class="info-rows">
+            <div class="info-row"><span class="info-key">Einsatz</span><span class="info-val">In Claude Code oder jedem Agenten mit Terminal-Zugang</span></div>
+            <div class="info-row"><span class="info-key">Wirkung</span><span class="info-val">Du gibst das Ziel vor — der Agent arbeitet bis zum grünen Zustand</span></div>
+          </div>
+        </div>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText(this)">Kopieren</button>
+LOOP IN CLAUDE CODE
+
+Baue [Feature] und lass die Tests laufen.
+
+Wenn ein Test rot ist:
+finde die Ursache, behebe sie,
+führe die Tests erneut aus.
+
+Wiederhole, bis alle Tests grün sind.
+
+Danach:
+fass in 3 Sätzen zusammen,
+was du geändert hast.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="all-prompts">
+    <canvas id="particles"></canvas>
+    <div class="dark-inner" style="padding: 96px 40px;">
+      <div class="dark-eyebrow">Alle 6 Loop-Prinzipien</div>
+      <h2 class="dark-title">Das komplette Loop-Setup —<br><em>komplett kostenlos</em></h2>
+      <p class="dark-desc">Alle 6 Prinzipien ausformuliert. Direkt kopieren und loopen.</p>
+      <div class="prompt-grid">
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">01</div>
+          <h4>Ziel statt Aufgabe denken</h4>
+          <p>Der Denk-Wechsel, mit dem alles beginnt: nicht die Schritte vorgeben, sondern das Ergebnis.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+Aufgabe-Denken: „Schreib mir X."
+
+Ziel-Denken: „Das Ergebnis soll Y erfüllen.
+Arbeite, bis Y steht."</div>
+        </div>
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">02</div>
+          <h4>Die Abbruchbedingung</h4>
+          <p>Das Herzstück. Ohne ein messbares „Fertig wenn" weiß der Loop nie, wann er aufhören soll.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+Jeder Loop braucht ein messbares „Fertig wenn":
+→ Alle Tests grün
+→ Alle 5 Punkte der Checkliste erfüllt
+→ Text besteht diese 3 Kriterien
+
+Ohne Abbruchbedingung → Endlosschleife.</div>
+        </div>
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">03</div>
+          <h4>Der Selbst-Review-Loop</h4>
+          <p>Funktioniert in jedem Chat, ohne Code. Claude bewertet sich selbst und bessert nach, bis es passt.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+„Bewerte dein Ergebnis gegen [Kriterien].
+Überarbeite, was fehlt.
+Wiederhole, bis alle Kriterien erfüllt sind.
+Zeig mir erst dann das Endergebnis."</div>
+        </div>
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">04</div>
+          <h4>Der Checklisten-Loop</h4>
+          <p>Für alle ohne Code: Gib eine Checkliste vor und lass Claude sie abarbeiten und selbst prüfen.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+„Hier ist eine Checkliste mit 6 Punkten.
+Arbeite sie ab, hak jeden Punkt ab.
+Prüfe am Ende jeden Punkt noch mal.
+Fehlt etwas → nachbessern.
+Erst wenn alle 6 stehen, bist du fertig."</div>
+        </div>
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">05</div>
+          <h4>Der Test-Loop in Claude Code</h4>
+          <p>Der Loop, den Anthropic selbst nutzt: bauen, testen, Fehler beheben, erneut testen — bis grün.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+„Führe [Aufgabe] aus und prüfe das Ergebnis
+selbst. Fehler → beheben und erneut prüfen.
+Wiederhole, bis das Ziel erreicht ist.
+Dann: kurz zusammenfassen, was du getan hast."</div>
+        </div>
+
+        <div class="dark-prompt-card">
+          <div class="dark-prompt-num">06</div>
+          <h4>Immer ein Limit setzen</h4>
+          <p>Die Notbremse. Ohne Obergrenze dreht ein Loop bei Zielen, die er nicht selbst prüfen kann, endlos.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+Setz IMMER ein Limit:
+→ „Maximal 3 Durchläufe, dann melde dich."
+
+Sonst dreht der Loop endlos bei Zielen,
+die er nicht selbst überprüfen kann.</div>
+        </div>
+
+        <!-- INSTAGRAM CTA CARD -->
+        <div class="dark-prompt-card" style="background: linear-gradient(135deg, rgba(204,120,92,0.08), rgba(180,107,78,0.06)); border-color: rgba(255,255,255,0.10); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; color:var(--blue); text-transform:uppercase; margin-bottom:16px;">Täglich neues KI-Wissen</div>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,30px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; color:#f0ece4;">
+              Ein guter Loop schlägt zehn gute Prompts.
+            </p>
+          </div>
+          <div>
+            <p style="font-size:13px; color:rgba(240,236,228,0.42); line-height:1.65; margin-bottom:20px;">
+              Diese 6 Prinzipien sind der Anfang. Auf Instagram zeige ich täglich neue KI-Workflows — direkt anwendbar, kein Fluff.
+            </p>
+            <a href="https://www.instagram.com/larissawegener" target="_blank" rel="noopener"
+               style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(90deg, #833ab4, #e1306c, #fd1d1d, #f77737, #fcaf45); color:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.02em; padding:11px 20px; border-radius:10px; text-decoration:none; transition:all 0.2s; box-shadow: 0 16px 34px -20px rgba(225,48,108,0.65);"
+               onmouseover="this.style.opacity='0.88'; this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+              @larissawegener folgen
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="bonus">
+    <div class="section-inner">
+      <div class="eyebrow gold">Bonus</div>
+      <h2 class="section-title">4 Bonus-Loops</h2>
+      <p class="section-desc">Für alle die ihre Loops noch robuster machen wollen.</p>
+      <div class="bonus-grid">
+
+        <div class="bonus-card">
+          <div class="bonus-label">01</div>
+          <h4>Die Notbremse</h4>
+          <p>Der wichtigste Zusatz für jeden Loop: ein hartes Limit, damit er nie endlos dreht.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+Immer eine Notbremse einbauen:
+
+„Wiederhole maximal 3-mal.
+Wenn das Ziel dann nicht erreicht ist,
+stopp und erklär mir, woran es hängt."</div>
+        </div>
+
+        <div class="bonus-card">
+          <div class="bonus-label">02</div>
+          <h4>Zwischenstand loggen</h4>
+          <p>Damit du siehst, was der Loop tut: lass ihn nach jedem Durchlauf eine Zeile Status schreiben.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+„Nach jedem Durchlauf: schreib in 1 Zeile,
+was du geändert hast und was noch offen ist.
+
+Dann weiter mit dem nächsten Durchlauf."
+
+→ Du behältst die Kontrolle, ohne einzugreifen.</div>
+        </div>
+
+        <div class="bonus-card">
+          <div class="bonus-label">03</div>
+          <h4>Der Zwei-Rollen-Loop</h4>
+          <p>Ein Trick für höhere Qualität: Claude arbeitet abwechselnd als Macher und als Kritiker.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+„Arbeite in zwei Rollen:
+
+MACHER schreibt die Lösung.
+KRITIKER sucht Fehler und Lücken.
+
+Wechsle hin und her, bis der Kritiker
+nichts mehr zu bemängeln findet."</div>
+        </div>
+
+        <div class="bonus-card">
+          <div class="bonus-label">04</div>
+          <h4>Loop als Projekt-Anweisung</h4>
+          <p>Der Loop, der immer läuft: einmal in die Projekt-Anweisung schreiben, und jeder Auftrag wird zum Loop.</p>
+          <div class="dark-code-box">
+            <button class="mini-copy-btn" onclick="copyText(this)">Kopieren</button>
+In deine Projekt-Anweisung schreiben:
+
+„Bei jeder Aufgabe: Ziel + Abbruchbedingung
+klären, selbst prüfen, bei Fehlern korrigieren,
+erst bei Erfüllung melden. Maximal 3 Durchläufe."
+
+→ Jeder Auftrag wird automatisch ein Loop.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="early-access">
+    <div class="early-inner">
+      <div class="early-left">
+        <div class="eyebrow-dark">RealRise Community</div>
+        <h2>Täglich neue<br><em>Loops &amp; Blueprints</em><br>direkt zu dir.</h2>
+        <p>Trage dich ein für Early Access zur RealRise Community — tägliche KI-Loops, Prompts und Workflows die wirklich funktionieren.</p>
+        <ul class="early-benefits">
+          <li>Täglich neue Loops, Workflows &amp; KI-Tools — direkt anwendbar</li>
+          <li>Direkter Draht zu uns: stell deine Fragen, bekomm echte Antworten</li>
+          <li>Alle RealRise Guides &amp; Funnel-Pages komplett kostenlos</li>
+          <li>Immer als Erstes informiert, wenn neue Inhalte &amp; Tools erscheinen</li>
+        </ul>
+        <div class="early-trust">
+          <span>Kostenlos</span>
+          <span class="trust-dot">•</span>
+          <span>Kein Spam</span>
+          <span class="trust-dot">•</span>
+          <span>Jederzeit verlassen</span>
+        </div>
+      </div>
+      <div class="early-right">
+        <div class="early-right-card">
+          <!-- Custom Lead-Form → GHL Inbound Webhook -->
+          <form class="rr-form" data-source="larissa" data-placement="early-access" data-phone="required" novalidate style="padding: 24px;">
+            <div class="rr-field">
+              <label>Vorname</label>
+              <input type="text" name="first_name" placeholder="Dein Vorname" autocomplete="given-name" required>
+            </div>
+            <div class="rr-field">
+              <label>E-Mail</label>
+              <input type="email" name="email" placeholder="deine@email.de" autocomplete="email" required>
+            </div><div class="rr-field rr-phone" style="display:none"><label>Handynummer</label><input type="tel" name="phone" placeholder="+49 151 23456789" autocomplete="tel" inputmode="tel"></div>
+            <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="rr-consent">
+              <input type="checkbox" name="consent" required>
+              <span>Ich bin einverstanden, von RealRise E-Mails zu erhalten. Jederzeit abmeldbar. <a href="https://realrise-agency.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a>.</span>
+            </label>
+            <button type="submit" class="rr-submit">Zugang sichern →</button>
+            <div class="rr-trust"><span>Kostenlos</span><span>Kein Spam</span><span>Jederzeit abmeldbar</span></div>
+            <div class="rr-error" role="alert"></div>
+            <div class="rr-success"><h4>Top, du bist dabei!</h4><p>Check deine Mails — dein Zugang ist unterwegs.</p></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">REALRISE · @larissawegener · © 2026</div>
+      <div class="footer-links">
+        <a href="https://realrise-agency.com/impressum">Impressum</a>
+        <a href="https://realrise-agency.com/datenschutz">Datenschutz</a>
+        <a href="#" onclick="rrCookieSettings();return false;">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PFLICHT-CODE-BLOCK B -->
+
+  <script>
+    function copyText(btn) {
+      const box = btn.parentElement;
+      const text = box.innerText.replace(/^KOPIEREN\n|^Kopieren\n/i, '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Kopiert ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Kopieren'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    (function() {
+      const canvas = document.getElementById('particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const section = canvas.parentElement;
+      const NUM = 60;
+      let particles = [];
+      function resize() { canvas.width = section.offsetWidth; canvas.height = section.offsetHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      for (let i = 0; i < NUM; i++) {
+        particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.4 + 0.4, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, a: Math.random() * 0.4 + 0.08 });
+      }
+      function drawOrbs() {
+        const g1 = ctx.createRadialGradient(canvas.width * 0.75, canvas.height * 0.3, 0, canvas.width * 0.75, canvas.height * 0.3, 340);
+        g1.addColorStop(0, 'rgba(204,120,92,0.09)'); g1.addColorStop(1, 'transparent');
+        ctx.fillStyle = g1; ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const g2 = ctx.createRadialGradient(canvas.width * 0.2, canvas.height * 0.7, 0, canvas.width * 0.2, canvas.height * 0.7, 280);
+        g2.addColorStop(0, 'rgba(204,120,92,0.06)'); g2.addColorStop(1, 'transparent');
+        ctx.fillStyle = g2; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawOrbs();
+        for (const p of particles) {
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${p.a})`; ctx.fill();
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    (function() {
+      const els = document.querySelectorAll('section:not(#hero), .step, .prompt-card, .bonus-card, .dark-prompt-card');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; obs.unobserve(e.target); }});
+      }, { threshold: 0.08 });
+      els.forEach((el, i) => {
+        el.style.cssText += `opacity:0; transform:translateY(28px); transition:opacity 0.7s cubic-bezier(.16,1,.3,1) ${i * 0.04}s, transform 0.7s cubic-bezier(.16,1,.3,1) ${i * 0.04}s;`;
+        obs.observe(el);
+      });
+    })();
+  </script>
+
+  <!-- ── RealRise Lead-Form → GHL Inbound Webhook ── -->
+  <script>
+  (function(){
+    const RR_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/kzqtcVUjWkDlITNXDAUU/webhook-trigger/WbIflDi1OLz9gGFHjbWN'; /* GHL Inbound Webhook: RealRise Community Opt-in */
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    document.querySelectorAll('form.rr-form').forEach(function(form){
+    var phoneMode=(form.dataset.phone||'off').toLowerCase();var phoneWrap=form.querySelector('.rr-phone');if(phoneWrap&&phoneMode!=='off')phoneWrap.style.display='';
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const err = form.querySelector('.rr-error');
+        const ok  = form.querySelector('.rr-success');
+        const btn = form.querySelector('.rr-submit');
+        const firstName = (form.first_name.value || '').trim();
+        const email = (form.email.value || '').trim();
+        const consent = form.consent.checked;
+      const phoneEl = form.querySelector('input[name="phone"]'); const phone = phoneEl ? (phoneEl.value || '').trim() : '';
+        err.classList.remove('show');
+        if (form.website.value) return; /* Honeypot → Bot, still verwerfen */
+        if (firstName.length < 2) { err.textContent = 'Bitte gib deinen Vornamen ein.'; err.classList.add('show'); form.first_name.focus(); return; }
+        if (!EMAIL_RE.test(email)) { err.textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.'; err.classList.add('show'); form.email.focus(); return; }
+        if (!consent) { err.textContent = 'Bitte stimme dem Datenschutz zu.'; err.classList.add('show'); return; }
+      if (phoneMode === 'required') { var pd = phone.replace(/\D/g,''); if (pd.length < 6) { err.textContent = 'Bitte gib eine gültige Handynummer ein.'; err.classList.add('show'); if (phoneEl) phoneEl.focus(); return; } }
+        const origLabel = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Wird gesendet …';
+        function showSuccess(){
+          ['.rr-field', '.rr-consent', '.rr-submit', '.rr-trust'].forEach(function(sel){
+            form.querySelectorAll(sel).forEach(function(el){ el.style.display = 'none'; });
+          });
+          ok.classList.add('show');
+          setTimeout(function(){ window.location.href = 'https://ki.realrise-agency.com/guides?email=' + encodeURIComponent(email); }, 1300);
+        }
+        if (!RR_WEBHOOK) { console.warn('rr-form: Preview-Modus — keine Webhook-URL gesetzt.'); showSuccess(); return; }
+        try {
+          const res = await fetch(RR_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              first_name: firstName, email: email, phone: phone,
+              source: form.dataset.source || '', placement: form.dataset.placement || '', consent: true
+            })
+          });
+          if (!res.ok) throw new Error('bad status');
+        if(window.fbq)fbq('track','Lead');
+          showSuccess();
+        } catch (e2) {
+          btn.disabled = false; btn.textContent = origLabel;
+          err.textContent = 'Etwas ist schiefgelaufen. Bitte nochmal versuchen.'; err.classList.add('show');
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
