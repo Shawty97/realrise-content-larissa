@@ -27,7 +27,8 @@
 
   🔒  NIEMALS ANFASSEN (sonst driftet das Design / brechen die Leads):
    • Der gesamte <style>-Block (Design-Tokens + alle CSS-Regeln)
-   • Hero-Card-Titel "Werde Teil der RealRise Community"
+   • Opt-in-Framing (fix): OBEN = Library ("Erhalte jeden Tag die neuesten Updates aus
+     unserer Library"), UNTEN = Inner-Circle-WhatsApp-Gruppe — diese Texte NICHT umschreiben
    • Opt-in-Webhook (RR_WEBHOOK) + Redirect ki.realrise-agency.com/guides
    • Meta-Pixel-ID (1367349055288604), Honeypot (.rr-hp), Consent-Checkbox
    • Handynummer-Feld (.rr-phone) + data-phone="required"
@@ -283,10 +284,10 @@
     <!-- HERO OPT-IN (Card-Titel + data-source-Härtung beachten) -->
     <div class="optin">
       <div class="optin-head">
-        <span class="optin-label">Early Access</span>
+        <span class="optin-label">KI-Library · täglich neu</span>
         <span class="optin-pill">Kostenlos</span>
       </div>
-      <div class="optin-title">Werde Teil der RealRise Community</div>
+      <div class="optin-title">Erhalte jeden Tag die neuesten Updates aus unserer Library</div>
       <!-- Custom Lead-Form → GHL Inbound Webhook · data-source = DEIN Kürzel, NIE Seitenname -->
       <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="hero" data-phone="required" novalidate>
         <div class="rr-field"><label>Vorname</label>
@@ -298,7 +299,7 @@
         <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="rr-consent"><input type="checkbox" name="consent" required>
           <span>Ich bin einverstanden, von RealRise E-Mails zu erhalten. Jederzeit abmeldbar. <a href="https://realrise-agency.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a>.</span></label>
-        <button type="submit" class="rr-submit">Zugang sichern →</button>
+        <button type="submit" class="rr-submit">Library-Zugang sichern →</button>
         <div class="rr-trust"><span>Kostenlos</span><span>Kein Spam</span><span>Jederzeit abmeldbar</span></div>
         <div class="rr-error" role="alert"></div>
         <div class="rr-success"><h4>Top, du bist dabei!</h4><p>Check deine Mails — dein Zugang ist unterwegs.</p></div>
@@ -517,24 +518,24 @@ funktioniert in jedem Claude-Chat.</div></div>
 <section id="community" class="early">
   <div class="container">
     <div class="rev">
-      <span class="ey">RealRise Community</span>
-      <h2 style="margin-top:16px">Täglich neue <em>Blueprints</em> direkt zu dir.</h2>
-      <p class="lead">Trage dich ein für Early Access zur RealRise Community — tägliche KI-Tipps, Prompts und Workflows, die wirklich funktionieren.</p>
+      <span class="ey">Inner Circle · WhatsApp-Gruppe</span>
+      <h2 style="margin-top:16px">Free Support in der <em>Inner-Circle-Gruppe</em>.</h2>
+      <p class="lead">In unserer WhatsApp-Inner-Circle-Gruppe bekommst du kostenlosen Support — stell deine Fragen, wir lösen echte Anliegen gemeinsam. Genau wie in der Library selbst.</p>
       <ul class="benefits">
-        <li>Täglich neue Prompts, Workflows &amp; KI-Tools — direkt anwendbar</li>
-        <li>Direkter Draht zu uns: stell deine Fragen, bekomm echte Antworten</li>
-        <li>Alle RealRise Guides &amp; Funnel-Pages komplett kostenlos</li>
-        <li>Immer als Erstes informiert, wenn neue Inhalte &amp; Tools erscheinen</li>
+        <li>Kostenloser Support: stell deine Fragen, echte Anliegen werden gelöst</li>
+        <li>Direkter Draht zur Community + zu uns — schnelle, echte Antworten</li>
+        <li>Täglich neue Prompts, Workflows &amp; KI-Tools aus der Praxis</li>
+        <li>Immer als Erstes dabei, wenn neue Inhalte &amp; Tools erscheinen</li>
       </ul>
       <div class="early-trust"><span>Kostenlos</span><span>·</span><span>Kein Spam</span><span>·</span><span>Jederzeit verlassen</span></div>
     </div>
     <!-- COMMUNITY OPT-IN · data-source = DEIN Kürzel, NIE Seitenname (identisch zum Hero-Formular) -->
     <div class="optin rev">
       <div class="optin-head">
-        <span class="optin-label">Early Access</span>
+        <span class="optin-label">Inner Circle · WhatsApp</span>
         <span class="optin-pill">Kostenlos</span>
       </div>
-      <div class="optin-title">Zugang zur Community sichern</div>
+      <div class="optin-title">Zugang zur WhatsApp-Gruppe sichern</div>
       <!-- Custom Lead-Form → GHL Inbound Webhook · data-source = DEIN Kürzel, NIE Seitenname -->
       <form class="rr-form" data-source="[DEIN-KÜRZEL]" data-placement="early-access" data-phone="required" novalidate>
         <div class="rr-field"><label>Vorname</label>
@@ -546,7 +547,7 @@ funktioniert in jedem Claude-Chat.</div></div>
         <input type="text" name="website" class="rr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="rr-consent"><input type="checkbox" name="consent" required>
           <span>Ich bin einverstanden, von RealRise E-Mails zu erhalten. Jederzeit abmeldbar. <a href="https://realrise-agency.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a>.</span></label>
-        <button type="submit" class="rr-submit">Zugang sichern →</button>
+        <button type="submit" class="rr-submit">WhatsApp-Gruppe beitreten →</button>
         <div class="rr-trust"><span>Kostenlos</span><span>Kein Spam</span><span>Jederzeit abmeldbar</span></div>
         <div class="rr-error" role="alert"></div>
         <div class="rr-success"><h4>Top, du bist dabei!</h4><p>Check deine Mails — dein Zugang ist unterwegs.</p></div>

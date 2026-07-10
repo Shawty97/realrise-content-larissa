@@ -1,6 +1,11 @@
-# REALRISE AFFILIATE MASTERPROMPT v2.4
+# REALRISE AFFILIATE MASTERPROMPT v2.5
 # ──────────────────────────────────────────────────────────
-# 🆕 NEU IN v2.4 (bitte ab jetzt diese Version nutzen):
+# 🆕 NEU IN v2.5 (bitte ab jetzt diese Version nutzen):
+#   • 🎯 CTA-FRAMING geschärft: OBEN promotet die Opt-in-Card die KI-Library
+#     („Erhalte jeden Tag die neuesten Updates aus unserer Library"), UNTEN die
+#     Inner-Circle-WhatsApp-Gruppe (kostenloser Support). Funktion/Flow identisch — nur Text.
+# ──────────────────────────────────────────────────────────
+# 🔁 In v2.4:
 #   • 🎨 FLAGSHIP-REDESIGN: kompletter Umstieg auf den Apple-White-Look der Hauptseite
 #     (System-SF-Fonts, #F5F5F7, Coral #d97757, 980px-Pill-Buttons). Cream/Cormorant abgelöst.
 #     → Design-System-Sektion unten + _REFERENZ-TEMPLATE.html sind die 1:1-Vorlage.
