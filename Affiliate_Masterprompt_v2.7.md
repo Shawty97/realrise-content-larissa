@@ -1,6 +1,16 @@
-# REALRISE AFFILIATE MASTERPROMPT v2.6
+# REALRISE AFFILIATE MASTERPROMPT v2.7
 # ──────────────────────────────────────────────────────────
-# 🆕 NEU IN v2.6 (bitte ab jetzt diese Version nutzen):
+# 🆕 NEU IN v2.7 (bitte ab jetzt diese Version nutzen):
+#   • ✨ FLAGSHIP-POLISH v3.1 (Pflicht auf jeder Page):
+#     – Weichere Schatten: neuer --shadow-Wert + --shadow-lift für Hover (siehe Design-Tokens)
+#     – text-wrap: balance (Headlines) / pretty (Fließtext) + :active-Scale auf allen Pill-Buttons
+#     – og:title / og:description / og:type im <head> — saubere Vorschau in WhatsApp/DMs
+#     – Kontrast auf dunklen Sektionen: Fließtext rgba(255,255,255,.68) statt .6 (WCAG AA)
+#     – 🛡️ REVEAL-FAILSAFE-Script vor </body> (Pflicht-Block): .rev-Inhalte können in
+#       Hintergrund-Tabs/Instagram-In-App-Browser sonst unsichtbar hängen bleiben
+#     Alles bereits im _REFERENZ-TEMPLATE.html — einfach kopieren wie immer.
+# ──────────────────────────────────────────────────────────
+# 🔁 In v2.6:
 #   • 🎯 BOTTOM-CTA auf KAUFINTERESSE geschärft: Inner Circle framt Nähe/Beweis/Entscheidung
 #     („Sieh aus nächster Nähe, ob das dein Weg zum Unternehmer ist") statt „Free Support" —
 #     zieht Entscheider an statt Gratis-Sucher. Funktion/Flow unverändert.
@@ -380,7 +390,8 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
   --bg:#F5F5F7; --card:#FFFFFF; --ink:#1D1D1F; --gray:#86868B; --gray2:#6E6E73;
   --line:#E5E5E7; --coral:#d97757; --coral-deep:#a8542e; --green:#1A8A4A;
   --dark:#161312;
-  --radius:20px; --shadow:0 2px 10px rgba(0,0,0,.04), 0 10px 34px rgba(0,0,0,.06);
+  --radius:20px; --shadow:0 1px 4px rgba(0,0,0,.03), 0 8px 26px rgba(0,0,0,.05);
+  --shadow-lift:0 6px 18px rgba(0,0,0,.06), 0 24px 52px rgba(0,0,0,.10);
   --spring:cubic-bezier(.4,1.3,.5,1);
 }
 ```
@@ -397,6 +408,9 @@ HTML (direkt vor `</body>`, nur den `@handle` bei footer-brand auf [INSTAGRAM] s
 - **Dunkle Sektionen `.dark` / `.early`:** bg `#161312` + Coral-Radial-Glow (`::before`), weiße Headline mit Coral-`<em>`. Für „Alle N" (Karten `.dcard`) + Community/Early-Access.
 - **Code-Boxen `.code` / `.dcode`:** dunkel `#161312`, System-Mono, `white-space:pre-line`, Copy-Button oben rechts; mobil `@media(max-width:820px){.code,.dcode{font-size:11px;line-height:1.62}}`.
 - **Reveal:** `.rev` → Klasse `.in` per IntersectionObserver (opacity/translateY). Keine schweren Hero-Animationen mehr.
+- **Reveal-Failsafe (Pflicht, vor `</body>`):** Timer + visibilitychange blenden `.rev`-Elemente notfalls ein — ohne bleibt Content in Hintergrund-Tabs/In-App-Browsern unsichtbar. Snippet 1:1 aus dem Referenz-Template kopieren.
+- **Polish (Pflicht):** `h1,h2,h3{text-wrap:balance}` · `p,li{text-wrap:pretty}` · `:active{transform:scale(.97)}` auf allen Pill-Buttons · Fließtext auf dunklen Sektionen `rgba(255,255,255,.68)`.
+- **OG-Tags (Pflicht, im `<head>`):** `og:title` + `og:description` (= Titel/Teaser der Seite) + `og:type website` — steuert die Link-Vorschau in WhatsApp/Instagram-DMs.
 
 ### Opt-in-Card `.optin` (Pflicht — im Hero UND Early-Access)
 
@@ -458,6 +472,9 @@ Reihenfolge-Baukasten wie in `loops.html`: **Hero (Bold-H1 + Opt-in-Card)** → 
 - [ ] Community/Inner-Circle-Sektion (`.early`): Benefits-Liste (Coral ✓) + Trust-Reihe (nie nur 1 Satz)?
 - [ ] Coral `#d97757` als EINZIGE Akzentfarbe — kein Gold/Warm/Lila/Blau? (Grün nur: `#25d366` WhatsApp-Button · `#1A8A4A` Trust-Häkchen)
 - [ ] Scroll-Reveal (`.rev` → `.in`) vorhanden?
+- [ ] Reveal-Failsafe-Script vor `</body>`?
+- [ ] og:title / og:description im `<head>`?
+- [ ] text-wrap-Polish + `:active`-States drin?
 
 **Deploy:**
 - [ ] Dateiname nur Kleinbuchstaben + Bindestriche, keine Umlaute/Leerzeichen?
@@ -513,7 +530,7 @@ Das Design-System (Farben, Fonts, Hero, Eyebrows, Dark-Section, Custom-Form, Foo
 7. **COMMUNITY / INNER CIRCLE (DARK)** — `.early`-Sektion. Links: Headline + **Benefits-Liste (Coral ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Opt-in-Card** (`.optin` + `.rr-form`, `data-source="[NAME]"`)
    - ⚠️ **Opt-in-Framing UNTEN = Inner Circle** (für Kaufinteressenten): „Sieh aus nächster Nähe, ob das dein Weg zum Unternehmer ist" — Nähe/Beweis/Entscheidung, Button „In den Inner Circle →". Zieht Entscheider an — KEIN „Free Support".
 8. **FOOTER** — Block C 1:1 übernehmen (Impressum + Datenschutz → realrise-agency.com, Pflicht!)
-9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Scroll-Reveal-IIFE (keine Canvas-/Partikel-Scripts mehr)
+9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Scroll-Reveal-IIFE → Reveal-Failsafe (keine Canvas-/Partikel-Scripts mehr)
 
 ---
 
