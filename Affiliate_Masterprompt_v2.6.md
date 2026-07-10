@@ -446,22 +446,18 @@ Reihenfolge-Baukasten wie in `loops.html`: **Hero (Bold-H1 + Opt-in-Card)** → 
 - [ ] Consent-Checkbox im Formular mit Datenschutz-Link?
 - [ ] Links zeigen auf `realrise-agency.com` (NICHT example.com / leer / eigene Domain)?
 
-**Design:**
-- [ ] Body hat radial blobs (kein flächiges Grid)?
-- [ ] Hero und Top3 haben Grid, How-to und Bonus nicht?
-- [ ] hero-stage + hero-energy-field + hero-scanline vorhanden?
-- [ ] Alle 4 Keyframes vorhanden?
-- [ ] Normale Cards: warm-brown shadow; Hero/Form-Cards: orange-glow?
-- [ ] Instagram CTA Card ([INSTAGRAM]) als letzter Slot in Dark Section?
-- [ ] Dunkle Sektionen/CTA: ORANGE Akzente + solid-oranger Button (KEIN Gold/Warm/Lila)?
-- [ ] Early Access: Benefits-Liste (orange ✓) + Trust-Reihe (nicht nur 1 Satz)?
-- [ ] **Nummern überall als IDENTISCHES Badge** (40×40px, radius 12, getönt, nur die Zahl) — KEINE Text-Nummern, keine Label-Suffixe wie „Top Hebel"/„Bonus"? (hell = orange-pale/orange · dunkel = orange-tint/#e0a890)
-- [ ] Code-Boxen ÜBERALL solid `#1a1714` (kein halbtransparentes Grau auf hellen Cards)?
-- [ ] `.code-box` hat `position:relative` + `padding-top:48px`? (sonst überlappt der Kopieren-Button die erste Code-Zeile)
-- [ ] Eyebrows einheitlich: Mono + orange Gradient-Linie (orange→orange, hell wie dunkel) — NIE warm/gold?
-- [ ] KONSEQUENT CLAUDE-ORANGE: nirgends Gold/Warm/Lila als Akzent (nur Grün #22A155 für live-Punkt + Trust-Häkchen)?
-- [ ] Scroll Reveal vorhanden?
-- [ ] `@media (max-width: 900px)` Block vorhanden?
+**Design (Flagship — Apple-White):**
+- [ ] Hintergrund flach `#F5F5F7` — KEINE radialen Blobs, KEIN Grid-Pattern, KEINE Scanline/Partikel/Hero-Stage-Animationen?
+- [ ] Fonts durchgängig System-SF (`var(--sans)`), Code in System-Mono — KEIN Cormorant/DM, keine Google-Fonts? Headlines BOLD (kein Serif), Akzentwort als Coral-`<em>`?
+- [ ] Buttons als 980px-Pills (`.btn-p` Coral / `.rr-submit` Coral-Pill)?
+- [ ] Eyebrows `.ey`: Coral, uppercase, kurzer Coral-Strich davor (kein Mono, kein Gold)?
+- [ ] Cards `.card`: weiß, `--line`-Border, `--radius` (20px), weicher `--shadow`, Hover-lift? Nummern-Badge `.ic` (44×44, `#F5F1EE`, Coral-Zahl)?
+- [ ] Dunkle Sektionen `.dark`/`.early`: `#161312` + Coral-Radial-Glow, weiße Headline + Coral-`<em>`?
+- [ ] Code-Boxen `.code`/`.dcode`: dunkel `#161312`, System-Mono, `white-space:pre-line`, `position:relative`, Copy-Button, mobil 11px (`@media max-width:820px`)?
+- [ ] Instagram-CTA-Card (`.ig-cta`, [INSTAGRAM]) als letzter Slot in der Dark-Section?
+- [ ] Community/Inner-Circle-Sektion (`.early`): Benefits-Liste (Coral ✓) + Trust-Reihe (nie nur 1 Satz)?
+- [ ] Coral `#d97757` als EINZIGE Akzentfarbe — kein Gold/Warm/Lila/Blau? (Grün nur: `#25d366` WhatsApp-Button · `#1A8A4A` Trust-Häkchen)
+- [ ] Scroll-Reveal (`.rev` → `.in`) vorhanden?
 
 **Deploy:**
 - [ ] Dateiname nur Kleinbuchstaben + Bindestriche, keine Umlaute/Leerzeichen?
@@ -507,16 +503,17 @@ Das Design-System (Farben, Fonts, Hero, Eyebrows, Dark-Section, Custom-Form, Foo
 
 **Fonts:** System-SF (`-apple-system` / SF Pro / Inter → `var(--sans)`) — **keine** Google-Fonts mehr. Code in System-Mono (`var(--mono)`).
 
-1. **NAV** — Fixed, glasmorphism, Links: „RealRise / [THEMA]", Rechts: „Top 3" · „Alle [X]" · „Bonus" · „Community"
-2. **HERO** (Grid ✅) — hero-stage + energy-field + scanline, Links: H1 + Subtitle, Rechts: hero-card (orange-glow) + **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`)
-   - ⚠️ **Hero-Card-Titel = „Werde Teil der RealRise Community"** (Button „Zugang sichern →"). Die Opt-in-Karte beschreibt IMMER den **Early Access zur RealRise Community** — NICHT das Reel-Thema als Köder („Hol dir die XY"). Das Thema lebt in H1/Subtitle links, die Karte rechts beschreibt, wofür man sich einträgt.
-3. **HOW TO USE** (Grid ❌) — 3 Steps, warm-brown shadow
-4. **TOP 3** (Grid ✅) — 3× prompt-card, warm-brown shadow
-5. **ALLE X DARK** (Grid ❌) — Canvas-Animation, X× dark-prompt-card + Instagram-CTA-Card
-6. **BONUS** (Grid ❌) — 4× bonus-card
-7. **EARLY ACCESS DARK** (Grid ✅ dezent) — Links: Headline + **Benefits-Liste (orange ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Lead-Formular** (`.rr-form`, `data-source="[NAME]"`) in weißem Wrapper
+1. **NAV** — sticky, Blur, Links: „RealRise / [THEMA]", Rechts-Anker: „Top 3" · „Alle [X]" · „Bonus" · „Community"
+2. **HERO** — Links: Bold-H1 + Subtitle (Akzentwort als Coral-`<em>`), Rechts: **Opt-in-Card** (`.optin` + `.rr-form`, `data-source="[NAME]"`)
+   - ⚠️ **Opt-in-Framing OBEN = KI-Library** (für Konsumenten): Card-Titel „Erhalte jeden Tag die neuesten Updates aus unserer Library", Button „Library-Zugang sichern →". Das Reel-Thema lebt in H1/Subtitle links — die Card rechts promotet IMMER die Library (kein „Hol dir die XY").
+3. **HOW / 3 SCHRITTE** — `.head`/`.ey` + `.g3` mit 3× `.card`
+4. **TOP 3** — `.head`/`.ey` + 3× `.prompt` mit `.code`-Box
+5. **ALLE X (DARK)** — dunkle `.dark`-Sektion: `.g2` mit X× `.dcard`/`.dcode` + Instagram-CTA-Card (`.ig-cta`)
+6. **BONUS** — `.g2` mit 4× `.card` + `.code`-Box
+7. **COMMUNITY / INNER CIRCLE (DARK)** — `.early`-Sektion. Links: Headline + **Benefits-Liste (Coral ✓) + Trust-Reihe** (NIE nur 1 Satz!), Rechts: **Opt-in-Card** (`.optin` + `.rr-form`, `data-source="[NAME]"`)
+   - ⚠️ **Opt-in-Framing UNTEN = Inner Circle** (für Kaufinteressenten): „Sieh aus nächster Nähe, ob das dein Weg zum Unternehmer ist" — Nähe/Beweis/Entscheidung, Button „In den Inner Circle →". Zieht Entscheider an — KEIN „Free Support".
 8. **FOOTER** — Block C 1:1 übernehmen (Impressum + Datenschutz → realrise-agency.com, Pflicht!)
-9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Canvas-IIFE → Scroll-Reveal-IIFE
+9. **SCRIPTS** (vor `</body>`) — `.rr-form`-Handler (Block A.3) → copyText() → Scroll-Reveal-IIFE (keine Canvas-/Partikel-Scripts mehr)
 
 ---
 
@@ -548,7 +545,7 @@ Jeder Lead wird automatisch:
 2. Webhook-URL mit Tippfehler → Leads kommen **still** NICHT an (kein sichtbarer Fehler!) → **Auto-Check pro Page fängt das ab; manueller Test-Lead bei erster/geänderter Page**
 3. Consent-Checkbox oder Honeypot (`.rr-hp`) vergessen → DSGVO-Risiko + Spam
 4. `/[NAME]/*` fehlt in `_redirects` → 404
-5. `?source=`/`data-source` falscher Affiliate → Leads falsch zugeordnet
+5. `data-source` = Seitenname/Thema statt festem Kürzel → Leads falsch zugeordnet
 6. Aus unvollständigem Ordner deployed → alle anderen Pages gelöscht (immer den ganzen Pages-Ordner via netlify-cli deployen)
 7. Redirect `/guides` relativ statt absolut → Lead landet nach Anmeldung im 404 (Survey-Seite liegt auf Hub-Site!)
 8. Dateiname mit Umlaut/Leerzeichen → URL kaputt → 404
