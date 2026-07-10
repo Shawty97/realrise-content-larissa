@@ -1,9 +1,14 @@
-# REALRISE AFFILIATE MASTERPROMPT v2.5
+# REALRISE AFFILIATE MASTERPROMPT v2.6
 # ──────────────────────────────────────────────────────────
-# 🆕 NEU IN v2.5 (bitte ab jetzt diese Version nutzen):
-#   • 🎯 CTA-FRAMING geschärft: OBEN promotet die Opt-in-Card die KI-Library
+# 🆕 NEU IN v2.6 (bitte ab jetzt diese Version nutzen):
+#   • 🎯 BOTTOM-CTA auf KAUFINTERESSE geschärft: Inner Circle framt Nähe/Beweis/Entscheidung
+#     („Sieh aus nächster Nähe, ob das dein Weg zum Unternehmer ist") statt „Free Support" —
+#     zieht Entscheider an statt Gratis-Sucher. Funktion/Flow unverändert.
+# ──────────────────────────────────────────────────────────
+# 🔁 In v2.5:
+#   • 🎯 CTA-FRAMING: OBEN promotet die Opt-in-Card die KI-Library
 #     („Erhalte jeden Tag die neuesten Updates aus unserer Library"), UNTEN die
-#     Inner-Circle-WhatsApp-Gruppe (kostenloser Support). Funktion/Flow identisch — nur Text.
+#     Inner-Circle-WhatsApp-Gruppe. Funktion/Flow identisch — nur Text.
 # ──────────────────────────────────────────────────────────
 # 🔁 In v2.4:
 #   • 🎨 FLAGSHIP-REDESIGN: kompletter Umstieg auf den Apple-White-Look der Hauptseite
