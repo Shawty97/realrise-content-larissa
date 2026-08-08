@@ -1,0 +1,258 @@
+<title>RealRise × AIMPACT — Claude Skill Command Center</title>
+<style>
+  :root{
+    --bg:#F5F5F7; --card:#FFFFFF; --ink:#191c26; --muted:#5b6172; --line:#e4e5ea;
+    --accent:#3157d5; --accent-soft:#eaeefb; --accent-ink:#22409e;
+    --good:#127a45; --good-soft:#e2f3e9;
+    --warn:#9a6608; --warn-soft:#faf0d8;
+    --block:#b23b3b; --block-soft:#fae5e5;
+    --shadow:0 1px 2px rgba(20,25,45,.04),0 6px 20px rgba(20,25,45,.06);
+    --r:14px;
+    --sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --body:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0e1016; --card:#171a23; --ink:#e9ebf2; --muted:#9298ab; --line:#262a36;
+      --accent:#6d8bf5; --accent-soft:#1b2338; --accent-ink:#a9bcfb;
+      --good:#3fbd77; --good-soft:#13241a;
+      --warn:#e0a63a; --warn-soft:#2a2210;
+      --block:#e56b6b; --block-soft:#2c1717;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#F5F5F7; --card:#FFFFFF; --ink:#191c26; --muted:#5b6172; --line:#e4e5ea;
+    --accent:#3157d5; --accent-soft:#eaeefb; --accent-ink:#22409e;
+    --good:#127a45; --good-soft:#e2f3e9; --warn:#9a6608; --warn-soft:#faf0d8;
+    --block:#b23b3b; --block-soft:#fae5e5; --shadow:0 1px 2px rgba(20,25,45,.04),0 6px 20px rgba(20,25,45,.06);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0e1016; --card:#171a23; --ink:#e9ebf2; --muted:#9298ab; --line:#262a36;
+    --accent:#6d8bf5; --accent-soft:#1b2338; --accent-ink:#a9bcfb;
+    --good:#3fbd77; --good-soft:#13241a; --warn:#e0a63a; --warn-soft:#2a2210;
+    --block:#e56b6b; --block-soft:#2c1717; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 22px 80px}
+  h1,h2,h3{font-family:var(--sans);text-wrap:balance;letter-spacing:-.01em}
+  h1{font-size:clamp(1.7rem,4.2vw,2.5rem);font-weight:800;margin:0 0 6px;line-height:1.1}
+  .sub{color:var(--muted);font-size:1.02rem;margin:0}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+  section{margin-top:44px}
+  h2{font-size:1.32rem;font-weight:700;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+  h2 .n{font-family:var(--mono);font-size:.9rem;color:var(--accent);font-weight:500}
+  .lede{color:var(--muted);margin:0 0 18px;max-width:64ch}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+  /* header */
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+  .brandmark{font-family:var(--mono);font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 12px;white-space:nowrap}
+  /* stat tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+  .tile{padding:18px 18px 16px}
+  .tile .k{font-family:var(--sans);font-size:2rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .l{color:var(--muted);font-size:.85rem;margin-top:6px}
+  .tile .d{font-size:.78rem;margin-top:8px;color:var(--good);font-weight:500}
+  /* pills */
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;font-family:var(--mono);padding:3px 9px;border-radius:99px;white-space:nowrap;letter-spacing:.02em}
+  .p-good{background:var(--good-soft);color:var(--good)}
+  .p-warn{background:var(--warn-soft);color:var(--warn)}
+  .p-block{background:var(--block-soft);color:var(--block)}
+  .p-acc{background:var(--accent-soft);color:var(--accent-ink)}
+  .dot{width:7px;height:7px;border-radius:99px;background:currentColor;display:inline-block}
+  /* table */
+  .tblwrap{overflow-x:auto;border-radius:var(--r)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:560px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;background:var(--card)}
+  tbody tr:last-child td{border-bottom:none}
+  code{font-family:var(--mono);font-size:.82em;background:var(--accent-soft);color:var(--accent-ink);padding:1px 6px;border-radius:6px}
+  .repo{font-family:var(--sans);font-weight:700}
+  /* cat grid */
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .catcard{padding:18px 18px 16px}
+  .catcard h3{font-size:1rem;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .catcard .cnt{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .catcard ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  .catcard li{font-family:var(--mono);font-size:.74rem;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:3px 8px;color:var(--ink)}
+  .catcard p{margin:8px 0 0;font-size:.86rem;color:var(--muted)}
+  /* prio */
+  .prio{display:flex;flex-direction:column;gap:12px}
+  .prow{display:flex;gap:16px;padding:16px 18px;align-items:flex-start}
+  .rank{font-family:var(--sans);font-weight:800;font-size:1.5rem;color:var(--accent);line-height:1;min-width:34px;font-variant-numeric:tabular-nums}
+  .prow h3{margin:0 0 3px;font-size:1.02rem}
+  .prow p{margin:0;font-size:.9rem;color:var(--muted)}
+  .who{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+  /* split who-does-what */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.split{grid-template-columns:1fr}}
+  .col{padding:18px}
+  .col h3{margin:0 0 12px;font-size:1rem;display:flex;align-items:center;gap:8px}
+  .item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+  .item:last-child{border-bottom:none}
+  .item .ic{flex-shrink:0;margin-top:2px}
+  .item b{font-weight:600}
+  .item span{color:var(--muted)}
+  /* checklist */
+  .check{padding:6px 20px}
+  .ci{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .ci:last-child{border-bottom:none}
+  .box{width:19px;height:19px;border:2px solid var(--accent);border-radius:6px;flex-shrink:0;margin-top:1px;position:relative}
+  .box.done{background:var(--accent);border-color:var(--accent)}
+  .box.done::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700}
+  .ci .t{font-size:.92rem}
+  .ci .t b{font-family:var(--sans)}
+  .ci .t small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .ci pre{margin:8px 0 0;background:var(--ink);color:var(--bg);padding:10px 12px;border-radius:8px;font-family:var(--mono);font-size:.78rem;overflow-x:auto}
+  :root[data-theme="dark"] .ci pre,@media(prefers-color-scheme:dark){.ci pre{background:#000;color:#d7dae6}}
+  .foot{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;text-align:center}
+  a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+  .note{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 15px;font-size:.86rem;margin-top:14px;color:var(--ink)}
+  .note b{color:var(--warn)}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Stand 20. Juli 2026 · Live</div>
+      <h1>Claude Skill Command Center</h1>
+      <p class="sub">Ein Setup für alle Ventures — RealRise, AIMPACT, FAOS &amp; alles Kommende.</p>
+    </div>
+    <div class="brandmark">7 Repos · 1 Hub · 0 offene PRs</div>
+  </header>
+
+  <div class="tiles">
+    <div class="tile card"><div class="k">7</div><div class="l">Repos ausgestattet</div><div class="d">✓ alle gemerged</div></div>
+    <div class="tile card"><div class="k">6</div><div class="l">Skill-Bibliotheken</div><div class="d">✓ inkl. claude-seo</div></div>
+    <div class="tile card"><div class="k">380+</div><div class="l">Skills verfügbar</div><div class="d">20 aktiv global</div></div>
+    <div class="tile card"><div class="k">~45</div><div class="l">Videos/Reels in Queue</div><div class="d" style="color:var(--warn)">⏳ lokal ziehen</div></div>
+    <div class="tile card"><div class="k">2</div><div class="l">Tools installiert</div><div class="d">✓ claudetube+ffmpeg</div></div>
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2><span class="n">01</span> Was steht — die 7 Repos</h2>
+    <p class="lede">Jedes Repo hat einen eigenen <code>claude-setup/</code>-Ordner als Selbstbedienungs-Bibliothek. Der <b>ClaudeSkills-Hub</b> ist die zentrale Anlaufstelle für Neues.</p>
+    <div class="card tblwrap">
+      <table>
+        <thead><tr><th>Repo</th><th>Rolle</th><th>Enthält</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="repo">ClaudeSkills 🏛️</td><td>Zentraler Hub</td><td>Setup · MEDIA-QUEUE · MASTER-OVERVIEW · Anthropic-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+          <tr><td class="repo">realrise-academy</td><td>Ursprung + Prod</td><td>Setup · MEDIA-QUEUE · <code>.mcp.json</code> · Video-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged · deploy ✓</span></td></tr>
+          <tr><td class="repo">faos-core</td><td>FableOS / Hermes</td><td>Setup · MEDIA-QUEUE · Video-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+          <tr><td class="repo">aimpact-brain</td><td>AIMPACT Brain</td><td>Setup · MEDIA-QUEUE · Video-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+          <tr><td class="repo">daily-ads</td><td>Ads</td><td>Setup-Paket · Video-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+          <tr><td class="repo">finance-academy</td><td>Finance-Venture</td><td>Setup-Paket (Skills via Installer)</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+          <tr><td class="repo">crm-ultra</td><td>CRM / Outreach</td><td>Setup-Paket · Video-Skills</td><td><span class="pill p-good"><span class="dot"></span>merged</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2><span class="n">02</span> Das Arsenal — Skills &amp; Plugins nach Nutzen</h2>
+    <p class="lede">Was der Installer <code>claude-setup/install-claude-skills.sh</code> holt und aktiviert. „Beste aus allen" = gezielt aktiviert, nicht blind alles.</p>
+    <div class="grid2">
+      <div class="catcard card">
+        <h3>📈 SEO · AEO · GEO <span class="pill p-acc">claude-seo</span></h3>
+        <span class="cnt">25 Sub-Skills · 18 parallele Agents · MIT</span>
+        <ul><li>seo-audit</li><li>seo-geo</li><li>seo-schema</li><li>seo-technical</li><li>seo-local</li><li>seo-content</li><li>seo-backlinks</li><li>seo-programmatic</li></ul>
+        <p>Landingpages, Blogs &amp; Affiliates auf AI-Search optimieren. Dein Geld-Skill Nr. 1.</p>
+      </div>
+      <div class="catcard card">
+        <h3>🎬 Video &amp; Transkript</h3>
+        <span class="cnt">claudetube MCP · 2 Skills · 1500+ Seiten</span>
+        <ul><li>claudetube</li><li>youtube-transcript</li><li>video-downloader</li></ul>
+        <p>Video → Whisper-Transkript + Frames → Zusammenfassung. „Nie wieder schauen." Läuft lokal.</p>
+      </div>
+      <div class="catcard card">
+        <h3>📄 Dokumente &amp; Office</h3>
+        <span class="cnt">Offizielle Anthropic-Skills</span>
+        <ul><li>docx</li><li>pptx</li><li>xlsx</li><li>pdf</li><li>doc-coauthoring</li><li>internal-comms</li></ul>
+        <p>Reports, Decks, Angebote, Verträge — erstellen, lesen, editieren, OCR.</p>
+      </div>
+      <div class="catcard card">
+        <h3>🎨 Design &amp; Content</h3>
+        <span class="cnt">Für Larissa &amp; Landingpages</span>
+        <ul><li>frontend-design</li><li>canvas-design</li><li>theme-factory</li><li>web-artifacts-builder</li><li>algorithmic-art</li><li>slack-gif-creator</li></ul>
+        <p>UI, Grafiken, 3D/Scroll-Homepage, Repurposing-Visuals.</p>
+      </div>
+      <div class="catcard card">
+        <h3>🎯 Outreach &amp; Sales</h3>
+        <span class="cnt">lokal + SDR-Stack (folgt)</span>
+        <ul><li>cold-email</li><li>email-sequence</li><li>skill-1…5</li><li>linkedin-social</li><li>revops</li></ul>
+        <p>5-Stufen-Outreach + 31 SDR-Skills, sobald du den Blueprint reinwirfst.</p>
+      </div>
+      <div class="catcard card">
+        <h3>🧠 Architektur &amp; Infra</h3>
+        <span class="cnt">Governance + Gateway</span>
+        <ul><li>mcp-builder</li><li>gitnexus-*</li><li>gstack</li><li>OmniRoute</li></ul>
+        <p>Eigene MCP-Server, Code-Intelligence, AI-Gateway (~1,4 Mrd. Free-Tokens/Mo) für Hermes.</p>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:16px">Referenz-Bibliothek zusätzlich: <b>alirezarezvani/claude-skills</b> (358 Skills, 30+ Agents) — als Fundus, gezielt aktivierbar.</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2><span class="n">03</span> Prio-Plan — wer nutzt was zuerst</h2>
+    <p class="lede">Diese Woche, nach Impact geordnet. Bis FableOS steht, laufen wir auf diesem Stack.</p>
+    <div class="prio">
+      <div class="prow card"><div class="rank">1</div><div><h3>SEO/AEO/GEO auf die Funnels</h3><p><code>/seo audit</code> für academy.realrise-agency.com + phase1 + Blogs → Action-Plan abarbeiten. Dann als Service für Affiliates.</p><div class="who"><span class="pill p-acc">Robert</span><span class="pill p-acc">Daniel</span></div></div></div>
+      <div class="prow card"><div class="rank">2</div><div><h3>MEDIA-QUEUE abarbeiten</h3><p>Lokal claudetube-Batch über alle ~45 Links → Transkripte + Zusammenfassungen. Erkenntnisse fließen in FAOS/Hermes.</p><div class="who"><span class="pill p-acc">Robert</span><span class="pill p-warn">1 Abend</span></div></div></div>
+      <div class="prow card"><div class="rank">3</div><div><h3>SDR-Stack integrieren</h3><p>johnpeslar-Blueprint (31 Outbound-Skills) lokal holen → Text reinwerfen → ich baue die Skills in crm-ultra + Hub.</p><div class="who"><span class="pill p-acc">Robert</span><span class="pill p-acc">Yassine-Team</span></div></div></div>
+      <div class="prow card"><div class="rank">4</div><div><h3>Content-Maschine</h3><p><code>ContentAnalysis</code> + <code>video</code> + <code>linkedin-social</code> für organisches Repurposing. „Marketing organic for free"-Learnings umsetzen.</p><div class="who"><span class="pill p-acc">Larissa</span></div></div></div>
+      <div class="prow card"><div class="rank">5</div><div><h3>Infra &amp; neue Homepage</h3><p>OmniRoute für Hermes-Router evaluieren · Three.js-Homepage mit 3D/Scroll bauen.</p><div class="who"><span class="pill p-acc">Robert</span><span class="pill p-warn">wenn Luft</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2><span class="n">04</span> Wer macht was</h2>
+    <p class="lede">Faustregel: <b>GitHub-Link → mach ich sofort selbst. Social / Login / lokal → ihr holt's, ich verarbeite es.</b></p>
+    <div class="split">
+      <div class="col card">
+        <h3><span class="pill p-good"><span class="dot"></span>Erledigt</span> Claude (Cloud)</h3>
+        <div class="item"><span class="ic">✅</span><div><b>6 Repos geklont &amp; integriert</b> <span>— claude-seo (25 Skills+18 Agents), OmniRoute, 4 Bibliotheken</span></div></div>
+        <div class="item"><span class="ic">✅</span><div><b>7 Repos ausgestattet + gemerged</b> <span>— Setup, MEDIA-QUEUE, Übersichten</span></div></div>
+        <div class="item"><span class="ic">✅</span><div><b>~45 Links katalogisiert</b> <span>— mit euren Notizen, Status-Tracking, alle 5 Videos benannt</span></div></div>
+        <div class="item"><span class="ic">✅</span><div><b>Toolchain installiert</b> <span>— claudetube 1.0.0, ffmpeg 6.1.1, yt-dlp (in-Session verifiziert)</span></div></div>
+      </div>
+      <div class="col card">
+        <h3><span class="pill p-warn"><span class="dot"></span>Nur ihr</span> Robert &amp; Larissa</h3>
+        <div class="item"><span class="ic">📥</span><div><b>Videos/IG lokal ziehen</b> <span>— Cloud-Firewall blockt YouTube/IG (mehrfach bestätigt, auch via claudetube)</span></div></div>
+        <div class="item"><span class="ic">💬</span><div><b>„Kommentiere X → DM"-Funnels</b> <span>— ihr kommentiert, werft mir Link/Anleitung rein</span></div></div>
+        <div class="item"><span class="ic">📋</span><div><b>Geblockte Blogs/Posts</b> <span>— Text kopieren + pasten (z.B. SDR-Stack)</span></div></div>
+        <div class="item"><span class="ic">🗂️</span><div><b>Lokale Skills sichern</b> <span>— Outreach 1–5, gstack, Media ins Hub-Repo committen</span></div></div>
+      </div>
+    </div>
+    <div class="note"><b>Warum die Firewall?</b> Diese Cloud-Session darf nur GitHub/PyPI/npm erreichen. Ein Skill ist nur Text — er umgeht keine Firewall. Auf eurem Mac gibt es diese Grenze nicht: dort zieht claudetube jedes Video.</div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2><span class="n">05</span> Diese Woche fertigstellen</h2>
+    <p class="lede">Der komplette Weg von „steht im Repo" zu „läuft für jedes Business".</p>
+    <div class="card check">
+      <div class="ci"><div class="box done"></div><div class="t"><b>7 Repos ausgestattet &amp; gemerged</b><small>Von mir erledigt — alle in <code>main</code>.</small></div></div>
+      <div class="ci"><div class="box done"></div><div class="t"><b>claudetube + ffmpeg installiert</b><small>In der Cloud verifiziert — dieselben Befehle laufen bei euch identisch.</small></div></div>
+      <div class="ci"><div class="box"></div><div class="t"><b>Lokal einrichten (Robert, ~5 Min, einmalig)</b><small>In einem gemergten Repo ausführen:</small><pre>bash claude-setup/install-claude-skills.sh
+pip install "claudetube[mcp]" &amp;&amp; brew install ffmpeg
+claude mcp add claudetube -- claudetube-mcp</pre></div></div>
+      <div class="ci"><div class="box"></div><div class="t"><b>MEDIA-QUEUE abarbeiten (Robert)</b><small>In Claude Code sagen:</small><pre>Gehe claude-setup/MEDIA-QUEUE.md durch — jeden 🟡-Eintrag:
+Transkript + Zusammenfassung nach claude-setup/media-notes/</pre></div></div>
+      <div class="ci"><div class="box"></div><div class="t"><b>SEO scharf schalten (Robert + Daniel)</b><small><code>/seo audit</code> auf Academy, phase1 &amp; Blogs — Action-Plan abarbeiten.</small></div></div>
+      <div class="ci"><div class="box"></div><div class="t"><b>Content-Flow starten (Larissa)</b><small>Setup ins Content-Repo ausrollen (2 Min, sag mir Bescheid), dann <code>ContentAnalysis</code> + <code>video</code> nutzen.</small></div></div>
+      <div class="ci"><div class="box"></div><div class="t"><b>Blueprints &amp; Reste reinwerfen (laufend)</b><small>SDR-Stack-Text, IG-Reel-Anleitungen, neue Links → ich integriere jedes Format.</small></div></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    RealRise × AIMPACT · Claude Skill Command Center · gebaut in einer Claude-Code-Session ·
+    Quelle: <code>claude-setup/MASTER-OVERVIEW.md</code> im ClaudeSkills-Hub<br>
+    Bis FableOS steht, läuft alles auf diesem Stack — dann kombinieren wir.
+  </div>
+</div>
